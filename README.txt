@@ -1,3 +1,5 @@
-1010! GAME
+CHECKERS
 
-Based off the application 1010!, this game 
+To execute:
+javac Checkers.java
+java Checkers
