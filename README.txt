@@ -7,7 +7,7 @@ The game has the option of being played against another player (on the same Term
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Gameplay:
-The player(s) is prompted to choose a row and column they wish to move their piece to. The piece is selected using row/column. These selections are filtered so the piece must exist and the move must be allowed by game rules.
+The player(s) is prompted to choose a numbered piece and can enter L, R, BL, BR to move left, right, back-left, back-right respectively. These selections are filtered so the piece must exist and the move must be allowed by game rules.
 
 Levels are implemented with the presence checkers strategies (or the lack thereof) in the moves of the opponent. After the player selects a level, the algorithm will scan the board to judge the best move to counteract the player’s advance.
 
