@@ -1,7 +1,13 @@
-01-11:
-- created devlog.txt and readme.txt
+1/11
+- created README.txt and devlog.txt
 - discussed project idea
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-01-12:
+1/12
+- developed plan for writing up project
+- discussed user execution of the game through terminal
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/13
