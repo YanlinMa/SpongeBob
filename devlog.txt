@@ -3,21 +3,21 @@ DEVLOG
 1/11
 - created README.txt and devlog.txt
 - discussed project idea
-  DONE BY: team spongebob
+  DONE BY: SpongeBob
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/12
 - started developing plan for project
 - discussed user execution of the game through terminal
-  DONE BY: team spongebob
+  DONE BY: SpongeBob
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/13
 - started drawing a hierarchy of the files under Checkers.java
 - discussed how the main method would be run to play the game
-  DONE BY: team spongebob
+  DONE BY: SpongeBob
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
