@@ -1,3 +1,5 @@
+DEVLOG
+
 1/11
 - created README.txt and devlog.txt
 - discussed project idea
