@@ -1,0 +1,7 @@
+TO DO
+
+- UML and flow chart
+- Write up skeleton files (by beginning of next week)
+- Develop algorithms for different levels of difficulty
+- Start coding files (next week)
+- Decide on a display for the game
