@@ -22,3 +22,6 @@ DEVLOG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/14
+- created to-do.txt
+- drew a UML diagram and a flowchart
+  DONE BY: SpongeBob
