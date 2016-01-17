@@ -13,6 +13,10 @@ public class Checkers {
 	}
 	*/
 
+	System.out.println("Congratulations, you win!")
+	System.out.println("Your opponent won. Better luck next time.")
+	System.out.println("Type play again to replay, exit to exit the game.")
+
     }
 
 
@@ -21,19 +25,21 @@ public class Checkers {
 	//until win = true, run following code
 	Board b = new Board();
 	System.out.println(b);
-	//user input for which piece (piece's number);
-	//user input for move (FL, FR, JFL, JFR, BL, BR, JBL, JBR)
+	//user input for which piece to move (piece's number);
+	//user input for direction to move in (FL, FR, JFL, JFR, BL, BR, JBL, JBR)
+	//jumps?
 	//store [pieceNum, moveDirection]
 	b.move(moveArray);
 	System.out.println(b);
 	//check if win / possibility of other jumps -- loop this
-	//if not, generate opponent move based on level
+	//update boolean
+	//if not win, generate opponent move based on level
 	//store in moveArray
 	b.move(moveArray);
 	System.out.println(b);
 	//check if win
 	//update boolean
-	//back to loop
+	//if not win, back to user input for which piece to move
     }
 
 }
