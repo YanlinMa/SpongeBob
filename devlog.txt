@@ -27,3 +27,8 @@ DEVLOG
   DONE BY: SpongeBob
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/15
+- started coding Checkers.java
+- created other java files
+  DONE BY: SpongeBob
