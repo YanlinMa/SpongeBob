@@ -1,14 +1,26 @@
 TO DO
 
-- UML and flow chart (1/15)
-- Write up skeleton files (by beginning of next week)
-   - add instance variables, methods
-   - comment on each methods
+- UML and flow chart (COMPLETED 1/15)
+- Write up skeleton files (by beginning of next week) (COMPLETED 1/17)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
 - Implement methods for simple level 0 (or 1?)
    - random move AI
+   > estimated 2 hr - 1/18-1/19
+- Implement controls to prevent illegal user moves and implement pieceNum (?) system
+   > estimated 2 hr - 1/19-1/20
 - Develop algorithms for different levels of difficulty
+   > estimated 2 hr - 1/20
+- Game display discussion
+   > estimated 1 hr - 1/21-1/22
 - Implement algorithms for levels
+   > estimated ??? hr - 1/20-1/23
+-- V1 COMPLETE?
+
 - Improve game display
+   > estimated 2 hr - 1/24
 - Improve implementations
 - readme.md
 - Extras and final check
+-- DONE
