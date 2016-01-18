@@ -38,7 +38,7 @@ public class Checkers {
 	//user input for direction to move in (FL, FR, JFL, JFR, BL, BR, JBL, JBR)
 	//jumps?
 	//store [pieceNum, moveDirection]
-	b.move(moveArray);
+	b.move(moveArray); // move will convert
 	System.out.println(b);
 	//check if win / possibility of other jumps -- loop this
 	//update boolean
