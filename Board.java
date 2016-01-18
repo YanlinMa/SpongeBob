@@ -9,10 +9,10 @@ public class Board {
     //accessors for instance variables
 
     
-    //need method for generating move
+    //need method for generating move coordinates (see comment directly below)
 
-    //make this take in diff inputs "FR" etc.
-    public void move(int xInd, int yInd) {
+    //make this take in diff inputs "FR" etc. and convert them? (helper fxn?)
+    public void move(String[] input) {
     }
     
     //public boolean canMove() -- ?? what was this again? necessary?
