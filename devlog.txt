@@ -32,3 +32,10 @@ DEVLOG
 - started coding Checkers.java
 - created other java files
   DONE BY: SpongeBob
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/18 (not done yet!)
+- finish skeleton files
+- final planning and to-do list updating
+  DONE BY: who knows
