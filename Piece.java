@@ -3,7 +3,7 @@
   - how should status be used
   - is there a easier than the boolean king to change toString?
   - is protected correct?
-  - is pieceNum necessary or just use naming system?
+  - is pieceNum necessary or just use naming system? -- implement later
 
  */
 
