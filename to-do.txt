@@ -6,3 +6,4 @@ TO DO
 - Start coding files (next week)
 - Decide on a display for the game
 - readme.md
+- final check
