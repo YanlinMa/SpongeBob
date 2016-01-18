@@ -2,7 +2,6 @@
 
   - how should status be used
   - is there a easier than the boolean king to change toString?
-  - is the default constructor necessary?
   - is protected correct?
 
  */
@@ -13,18 +12,7 @@ public abstract class Piece {
     protected boolean king;
     protected boolean status; // this for dead / alive? wb king?
 
-
-    // default constructor -- needed?
-    public Piece() {
-	king = false;
-	status = true;
-    }
-
-    // overloaded constructor
-    public Piece(boolean s) {
-	king = false;
-	status = s;
-    }
+    
     
     //returns whether a piece is a king
     public boolean isKing() {

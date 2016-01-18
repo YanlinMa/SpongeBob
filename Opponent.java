@@ -1,5 +1,22 @@
-public class Opponent extends Piece { //is this notation right?
+/*THINGS TO DO:
 
+  - actually make it look like a piece
+
+ */
+/*TO THINK ABOUT / DO:
+  
+  - need default constructor?
+
+ */
+
+public class Opponent extends Piece { 
+
+    
+    // overloaded constructor
+    public Opponent(boolean s) {
+	king = false;
+	status = s;
+    }
 
     public String toString() {
 	String retStr = "";
@@ -8,11 +25,22 @@ public class Opponent extends Piece { //is this notation right?
 	    retStr = "=====\n=====\n=====";
 
 	else if (isKing())
-	    retStr = "=====\noking\n=====";
+	    retStr = "=====\nOPkng\n=====";
 
 	else
-	    retStr = "=====\noppce\n=====";
+	    retStr = "=====\nOPpce\n=====";
+
+	return retStr;
     }      
-    
+
+
+    public static void main(String[] args) {
+	Opponent p = new Opponent(true);
+	Opponent o = new Opponent(false);
+	System.out.println(p + "\n\n");
+	System.out.println(o + "\n\n");
+	p.setKing(true);
+	System.out.println(p);
+    }
 
 }
