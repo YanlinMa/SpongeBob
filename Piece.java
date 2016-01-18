@@ -8,10 +8,16 @@
 
 public abstract class Piece {
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // instance variables
     protected boolean king;
     protected boolean status; // this for dead / alive? wb king?
+    protected int pieceNum;
 
+
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //methods
     
     
     //returns whether a piece is a king
@@ -24,6 +30,11 @@ public abstract class Piece {
 	return status;
     }
 
+    //returns pieceNum
+    public int getPieceNum() {
+	return pieceNum;
+    }
+
     //sets king
     public void setKing(boolean x) {
 	king = x;
@@ -34,6 +45,13 @@ public abstract class Piece {
 	status = x;
     }
 
+    //sets pieceNum
+    public void setPieceNum(int x) {
+	pieceNum =  x;
+    }
+
+
+    
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // ABSTRACT METHODS
     

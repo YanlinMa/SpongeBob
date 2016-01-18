@@ -1,17 +1,39 @@
+/* TO THINK ABOUT / DO
+   
+   - are accessors needed for instance variables?
+   - read comments throughout
+
+*/
+
 public class Board {
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
     
     private Object[][] grid = new Object[8][8];
     private int countP = 0;
     private int countO = 0;
 
-    //accessors for instance variables
 
     
-    //need method for generating move coordinates (see comment directly below)
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //constructors
+    
+    public Board() {
+	setup();
+    }
 
-    //make this take in diff inputs "FR" etc. and convert them? (helper fxn?)
+    
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //methods
+    
+    
+    //need method for generating move coordinates (see comment directly below)
+    public void convertToCoord(String in) {
+    }
+
+    //make this take in diff inputs "FL" etc. and convert them? (helper fxn?)
     public void move(String[] input) {
     }
     
