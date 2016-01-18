@@ -1,8 +1,17 @@
+/*TO THINK ABOUT / DO:
+
+  - how should status be used
+  - is there a easier than the boolean king to change toString?
+  - is the default constructor necessary?
+  - is protected correct?
+
+ */
+
 public abstract class Piece {
 
     // instance variables
-    private boolean king;
-    private boolean status; // this for dead / alive? wb king?
+    protected boolean king;
+    protected boolean status; // this for dead / alive? wb king?
 
 
     // default constructor -- needed?
@@ -13,31 +22,33 @@ public abstract class Piece {
 
     // overloaded constructor
     public Piece(boolean s) {
-	kingt = false;
+	king = false;
 	status = s;
     }
     
-    
+    //returns whether a piece is a king
     public boolean isKing() {
 	return king;
     }
     
-
+    //returns whether a piece is existing or not
     public boolean getStatus() {
 	return status;
     }
 
-
-    abstract String toString();
-
-
+    //sets king
     public setKing(boolean x) {
 	king = x;
     }
 
-
+    //sets status
     public setStatus(boolean x) {
 	status = x;
     }
 
+
+    // ABSTRACT METHODS
+    
+    //opponents/players will show up differently on the board
+    abstract String toString();
 }
