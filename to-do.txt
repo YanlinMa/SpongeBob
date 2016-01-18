@@ -2,8 +2,13 @@ TO DO
 
 - UML and flow chart (1/15)
 - Write up skeleton files (by beginning of next week)
+   - add instance variables, methods
+   - comment on each methods
+- Implement methods for simple level 0 (or 1?)
+   - random move AI
 - Develop algorithms for different levels of difficulty
-- Start coding files (next week)
-- Decide on a display for the game
+- Implement algorithms for levels
+- Improve game display
+- Improve implementations
 - readme.md
-- final check
+- Extras and final check
