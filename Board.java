@@ -2,6 +2,7 @@
    
    - are accessors needed for instance variables?
    - read comments throughout
+   - implement user-friendly move fxns and its helpers
 
 */
 
@@ -31,10 +32,13 @@ public class Board {
     
     //need method for generating move coordinates (see comment directly below)
     public void convertToCoord(String in) {
+	
     }
 
     //make this take in diff inputs "FL" etc. and convert them? (helper fxn?)
+    //do above later-- just use coordinates now
     public void move(String[] input) {
+	
     }
     
     //public boolean canMove() -- ?? what was this again? necessary?
