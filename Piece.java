@@ -37,18 +37,18 @@ public abstract class Piece {
     }
 
     //sets king
-    public setKing(boolean x) {
+    public void setKing(boolean x) {
 	king = x;
     }
 
     //sets status
-    public setStatus(boolean x) {
+    public void setStatus(boolean x) {
 	status = x;
     }
 
-
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // ABSTRACT METHODS
     
     //opponents/players will show up differently on the board
-    abstract String toString();
+    public abstract String toString();
 }
