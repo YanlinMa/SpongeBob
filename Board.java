@@ -6,6 +6,7 @@
    - jump functionality (loop and check for multiple jumps) -- make this check if move is proper (right now it doesn't)
      probably should implement the user-friendly things first
    - check if swap and getPiece work
+   - implement remaining methods and check if player can move / jump pieces
 
 */
 
