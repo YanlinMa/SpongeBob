@@ -2,6 +2,8 @@ public class Checkers {
 
     public static void main(String[] args) {
 	System.out.println("\tCHECKERS\n\n");
+	//elaborate on welcome msg? instructions?
+	
 	/* TWO PLAYER FXNALITY TO BE ADDED LATER	
 	System.out.println("Type 1 for one player, 2 for two players; defaults to one player: \n");
 	//player input
@@ -12,16 +14,23 @@ public class Checkers {
 	    play(level);
 	}
 	*/
-
+	
+	Checkers game = new Checkers();
+	game.play();
+	
+	/* WIN MESSAGES -- should these depend on the play() method's return or should play be doing this?
 	System.out.println("Congratulations, you win!")
 	System.out.println("Your opponent won. Better luck next time.")
 	System.out.println("Type play again to replay, exit to exit the game.")
+	*/
+	
+	//PLAY AGAIN? looping feature that sets up a boolean and keeps running play til player says no
 
     }
 
 
     public void play(int level) {
-	boolean win = false;
+	boolean win = false; // WHAT ABOUT TIE GAMES? may need a boolean to record who the winner is / if tie
 	//until win = true, run following code
 	Board b = new Board();
 	System.out.println(b);
