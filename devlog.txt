@@ -35,7 +35,15 @@ DEVLOG
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1/18 (not done yet!)
-- finish skeleton files
+1/17-18 
+- finished skeleton files and started barebones implementation
 - final planning and to-do list updating
-  DONE BY: who knows
+- commented on files what needs to be done next
+  DONE BY: hyketwig
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/19 (not done yet!)
+- complete barebones implementation (working one-player model)
+- follow to-do list schedule
+  DONE BY: ???
