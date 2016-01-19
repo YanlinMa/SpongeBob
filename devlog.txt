@@ -35,6 +35,12 @@ DEVLOG
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+1/16
+- edited Checkers.java
+  DONE BY: Andrea
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 1/17-18 
 - finished skeleton files and started barebones implementation
 - final planning and to-do list updating
