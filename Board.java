@@ -88,7 +88,15 @@ public class Board {
 
 
     //check for wins (not on UML) -- wb ties? what should it return?
+    //should also return the winner, to add to SOP message in Checkers.java
     public boolean checkWin() {
+    	if (countP==0||countO==0) {
+    		return true;
+    		//if countP==0, opponent wins
+    		//if countO==0, player wins
+    	}
+    	//else if no more possible player moves, opponent wins
+    	//else if no more possible opponent moves, player wins
     }
 
 }
