@@ -37,3 +37,11 @@ Hard
 - other pieces move to form a pyramid
 - get as many pieces to the opposite side
 - should be based on user moves, to kill off user pieces and prevent user from reaching this side
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+http://stackoverflow.com/questions/18657121/program-to-create-shapes-and-show-them-on-console
+https://docs.oracle.com/javase/7/docs/api/java/awt/geom/Ellipse2D.html
+https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html
+http://docstore.mik.ua/orelly/java-ent/jfc/ch04_04.htm
+https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics2D.html
