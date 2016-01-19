@@ -37,7 +37,6 @@ public class Board {
     //swap pieces -- should just put this code in move instead of helper?
     public void swap(int[] pieceToMove, int[] whereToMove) {
 	Piece old = grid[pieceToMove[0]][pieceToMove[1]]; //0 = row, 1 = column?
-	//can use Piece here? since they can't be instantiated?
 	grid[pieceToMove[0]][pieceToMove[1]] =
 	    grid[whereToMove[0]][whereToMove[1]]; //??? cleaner way to do this?
         grid[whereToMove[0]][whereToMove[1]] = old;
@@ -71,7 +70,7 @@ public class Board {
 		grid[pieceToMove[0] - 1][pieceToMove[1] - 1].setStatus(false);
 	}	
 	//check for potential jumps and loop that fxnality til no more
-	
+	//to do later
     }
 
     //return Piece at 
@@ -79,11 +78,46 @@ public class Board {
 	return grid[rInd][cInd];
     }
 
+    
+    //populates grid with Pieces in starting formation
     public void setup() {
-	
+
+	//populate first three rows
+	boolean live = false;
+	for (int r = 0; r < 3; r++) {
+	    for (int c = 0; c < 8; c++) {
+		grid[r][c] = new Opponent(live);  //update Opponent, does it display opposite color?
+		live = !live;
+	    }
+	}
+
+	//next two rows
+	for (int r = 3; r < 5; r++) {
+	    for (int c = 0; c < 8; c+2) {
+		grid[r][c] = new Player(false); //make default Player false?
+		grid[r][c+1] = new Opponent(false); // make default Opponent false?
+	    }
+	}
+
+	//final three rows
+	live = true; // make sure true-- i think it already is tho
+	for (int r = 5; r < 8; r++) {
+	    for (int c = 0; c < 8; c++) {
+		grid[r][c] = new Player(live);
+		live = !live;
+	    }
+	}
     }
 
+
+    //prints out checkerboard (grid)
     public String toString() {
+	for (Piece[] r : grid) {
+	    for (Piece x : grid[r]) {
+		System.out.print(x);
+	    }
+	    System.out.print("\n");
+	}
     }
 
 
@@ -94,7 +128,8 @@ public class Board {
     		return true;
     		//if countP==0, opponent wins
     		//if countO==0, player wins
-    	}
+		//need to check if there are any possible moves (player counts might not be equal to 0)
+	}
     	//else if no more possible player moves, opponent wins
     	//else if no more possible opponent moves, player wins
     }
