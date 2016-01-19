@@ -49,6 +49,13 @@ DEVLOG
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+1/18
+- wrote levels implementation in to-do.txt
+- edited Board.java
+  DONE BY: Andrea
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 1/19 (not done yet!)
 - complete barebones implementation (working one-player model)
 - follow to-do list schedule
