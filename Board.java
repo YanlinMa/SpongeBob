@@ -93,7 +93,7 @@ public class Board {
 
 	//next two rows
 	for (int r = 3; r < 5; r++) {
-	    for (int c = 0; c < 8; c+2) {
+	    for (int c = 0; c < 8; c+=2) {
 		grid[r][c] = new Player(false); //make default Player false?
 		grid[r][c+1] = new Opponent(false); // make default Opponent false?
 	    }
@@ -113,7 +113,7 @@ public class Board {
     //prints out checkerboard (grid)
     public String toString() {
 	for (Piece[] r : grid) {
-	    for (Piece x : grid[r]) {
+	    for (int ) {
 		System.out.print(x);
 	    }
 	    System.out.print("\n");
@@ -133,5 +133,12 @@ public class Board {
     	//else if no more possible player moves, opponent wins
     	//else if no more possible opponent moves, player wins
     }
+
+
+    public static void main(String[] args) {
+    
+	Board b = new Board();
+	System.out.println(b);
+}
 
 }
