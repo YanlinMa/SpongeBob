@@ -1,11 +1,13 @@
+import cs1.Keyboard;
+
 public class Checkers {
 
     public static void main(String[] args) {
-	System.out.println("\tCHECKERS\n\n");
+	System.out.println("\tWELCOME TO\n\t CHECKERS\n\n");
 	//elaborate on welcome msg? instructions?
 	
 	/* TWO PLAYER FXNALITY TO BE ADDED LATER	
-	System.out.println("Type 1 for one player, 2 for two players; defaults to one player: \n");
+	System.out.println("Enter 1 for one player, 2 for two players; defaults to one player: \n");
 	//player input
 	
 	if (numPlayers == 1) { 
@@ -34,8 +36,10 @@ public class Checkers {
 	//until win = true, run following code
 	Board b = new Board();
 	System.out.println(b);
-	//user input for which piece to move (piece's number);
+	//user input piece to move
+	int x = Keyboard.readInt();
 	//user input for direction to move in (FL, FR, JFL, JFR, BL, BR, JBL, JBR)
+	String y = Keyboard.readString();
 	//jumps?
 	//store [pieceNum, moveDirection]
 	b.move(moveArray); // move will convert
