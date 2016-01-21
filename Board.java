@@ -125,9 +125,14 @@ public class Board {
 	return retStr;
     }
 
-
-    public void hasMoves(int r, int c) {
-	if 
+    //no jumps or kings
+    public boolean hasMoves(int r, int c) {
+    	boolean moves = false;
+	if (getPiece(r,c).getFriend()) 
+	    moves = !getPiece(r-1,c+1).getStatus() || !getPiece(r-1,c-1).getStatus();
+	else 
+	    moves = !getPiece(r+1,c+1).getStatus() || !getPiece(r+1,c-1).getStatus();
+    	return moves;
     }
 
     /*
