@@ -122,17 +122,17 @@ public class Board {
 	}
 	return retStr;
     }
-
+    /*
     //no jumps or kings
     public boolean hasMoves(int r, int c) {
     	boolean moves = false;
-	if (getPiece(r,c).getFriend()) 
+	if ((Player)getPiece(r,c).getFriend()) 
 	    moves = !getPiece(r-1,c+1).getStatus() || !getPiece(r-1,c-1).getStatus();
 	else 
 	    moves = !getPiece(r+1,c+1).getStatus() || !getPiece(r+1,c-1).getStatus();
     	return moves;
     }
-
+    */
     /*
     //check for wins (not on UML) -- wb ties? what should it return?
     //should also return the winner, to add to SOP message in Checkers.java
