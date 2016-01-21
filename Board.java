@@ -4,7 +4,7 @@
    - read comments throughout
    - implement user-friendly move fxns and its helpers
    - jump functionality (loop and check for multiple jumps) -- make this check if move is proper (right now it doesn't)
-     probably should implement the user-friendly things first
+   probably should implement the user-friendly things first
    - check if swap and getPiece work
    - implement remaining methods and check if player can move / jump pieces
 
@@ -16,8 +16,8 @@ public class Board {
     //instance variables
     
     private Piece[][] grid = new Piece[8][8];
-    private int countP = 0;
-    private int countO = 0;
+    //private int countP = 0;
+    //private int countO = 0;
 
 
     
@@ -33,7 +33,7 @@ public class Board {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods
 
-
+    /*
     //swap pieces -- should just put this code in move instead of helper?
     public void swap(int[] pieceToMove, int[] whereToMove) {
 	Piece old = grid[pieceToMove[0]][pieceToMove[1]]; //0 = row, 1 = column?
@@ -76,69 +76,70 @@ public class Board {
     //return Piece at 
     public Piece getPiece(int rInd, int cInd) {
 	return grid[rInd][cInd];
-    }
-
+	}
+    */
     
     //populates grid with Pieces in starting formation
     public void setup() {
+	
+	for (int c = 0; c < 8; c+=2) {	    	    
+	    grid[0][c] = new Player(false);
+	    grid[0][c+1] = new Empty();
+	    
+	    grid[1][c] = new Empty();
+	    grid[1][c+1] = new Player(false);
+	    
+	    grid[2][c] = new Player(false);
+	    grid[2][c+1] = new Empty();
 
-	//populate first three rows
-	boolean live = false;
-	for (int r = 0; r < 3; r++) {
-	    for (int c = 0; c < 8; c++) {
-		grid[r][c] = new Opponent(live);  //update Opponent, does it display opposite color?
-		live = !live;
-	    }
+	    grid[5][c] = new Empty();
+	    grid[5][c+1] = new Player();
+
+	    grid[6][c] = new Player();
+	    grid[6][c+1] = new Empty();
+
+	    grid[7][c] = new Empty();
+	    grid[7][c+1] = new Player();
+	    
+	    grid[3][c] = new Empty(); 
+	    grid[3][c+1] = new Player(false, false);
+	    
+	    grid[4][c] = new Player(false, false);
+	    grid[4][c+1] = new Empty();
 	}
 
-	//next two rows
-	for (int r = 3; r < 5; r++) {
-	    for (int c = 0; c < 8; c+=2) {
-		grid[r][c] = new Player(false); //make default Player false?
-		grid[r][c+1] = new Opponent(false); // make default Opponent false?
-	    }
-	}
-
-	//final three rows
-	live = true; // make sure true-- i think it already is tho
-	for (int r = 5; r < 8; r++) {
-	    for (int c = 0; c < 8; c++) {
-		grid[r][c] = new Player(live);
-		live = !live;
-	    }
-	}
     }
 
 
     //prints out checkerboard (grid)
     public String toString() {
-	for (Piece[] r : grid) {
-	    for (int ) {
-		System.out.print(x);
+	String retStr = "";
+	for (int r = 0; r < 8; r++) {
+	    for (int c = 0; c < 8; c++) {
+	        retStr += grid[r][c];
 	    }
-	    System.out.print("\n");
+	    retStr += "\n";
+	    for (int i = 0; i < 64; i++) {
+		retStr += "-";
+	    }
+	    retStr += "\n";
 	}
+	return retStr;
     }
 
-
+    /*
     //check for wins (not on UML) -- wb ties? what should it return?
     //should also return the winner, to add to SOP message in Checkers.java
     public boolean checkWin() {
-    	if (countP==0||countO==0) {
-    		return true;
-    		//if countP==0, opponent wins
-    		//if countO==0, player wins
-		//need to check if there are any possible moves (player counts might not be equal to 0)
-	}
-    	//else if no more possible player moves, opponent wins
-    	//else if no more possible opponent moves, player wins
+        return true;
     }
-
+    */
 
     public static void main(String[] args) {
     
 	Board b = new Board();
 	System.out.println(b);
-}
+	
+    }
 
 }
