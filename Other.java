@@ -24,10 +24,16 @@ public class Other {
 	    c = coo[1];
 	}
 
-	if (b.proper(r,c,r-1,c+1))
-	    b.move(r,c,r-1,c+1);
+	if (b.proper(r,c,r-1,c+1) && b.proper(r,c,r-1,c-1))
+	    if (Math.random() < .5)
+	    	b.move(r,c,r-1,c+1);
+	    else
+	    	b.move(r,c,r-1,c+1);
 	else
-	    b.move(r,c,r-1,c-1); 
+	    if (b.proper(r,c,r-1,c-1)
+	    	b.move(r,c,r-1,c-1);
+	    else
+	    	b.move(r,c,r-1,c+1);
 	    	
     }
 
