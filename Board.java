@@ -127,7 +127,7 @@ public class Board {
 
 
     public void hasMoves(int r, int c) {
-	
+	if 
     }
 
     /*
