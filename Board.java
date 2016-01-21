@@ -46,14 +46,12 @@ public class Board {
     public boolean proper(int r1, int c1, int r2, int c2) {
 	boolean good = false;
 
-	if (((Player)getPiece(r1,c1)).getFriend()) {
+	if (((Player)getPiece(r1,c1)).getFriend()) 
 	    if (!getPiece(r2,c2).getStatus()) //if empty spot
 	        good = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1); //if in right row
-	}
-	else {
+	else 
 	    if (!getPiece(r2,c2).getStatus()) 
 	        good = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
-	}
 
 	return good;	
     }
