@@ -125,6 +125,11 @@ public class Board {
 	return retStr;
     }
 
+
+    public void hasMoves(int r, int c) {
+	
+    }
+
     /*
     //check for wins (not on UML) -- wb ties? what should it return?
     //should also return the winner, to add to SOP message in Checkers.java
