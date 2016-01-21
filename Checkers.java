@@ -1,4 +1,4 @@
-import Keyboard.Keyboard;
+import java.util.Scanner;
 
 public class Checkers {
 
@@ -39,13 +39,17 @@ public class Checkers {
 	//user input for piece to move
 	//int x = Keyboard.readInt();
 	//user input coordinates of piece they want to move
-	int px = Keyboard.readInt();
-	int py = Keyboard.readInt();
+	Scanner input = new Scanner(System.in);
+	int px = input.nextInt();
+	Scanner input = new Scanner(System.in);
+	int py = input.nextInt();
 	//user input for direction to move in (FL, FR, JFL, JFR, BL, BR, JBL, JBR)
 	//String y = Keyboard.readString();
 	//user input coordinates to move this piece to
-	int mx = Keyboard.readInt();
-	int my = Keyboard.readInt();
+	Scanner input = new Scanner(System.in);
+	int mx = input.nextInt();
+	Scanner input = new Scanner(System.in);
+	int my = input.nextInt();
 	//jumps?
 	//store [pieceNum, moveDirection]
 	game.move(px,py,mx,my); // move will convert
