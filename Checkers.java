@@ -23,18 +23,25 @@ public class Checkers {
 	//until win = true, run following code
 	Board b = new Board();
 	System.out.println(b);
-	//user input for coordinates of piece to move
-	System.out.println("Enter row of piece to move: ");
-	int pr = Keyboard.readInt();
-	System.out.println("Enter column of piece to move: ");
-	int pc = Keyboard.readInt();
-	//user input for coordinates to move to
-	System.out.println("Enter row of place to move to: ");
-	int mr = Keyboard.readInt();
-	System.out.println("Enter column of place to move to: ");
-	int mc = Keyboard.readInt();
-	b.move(pr,pc,mr,mc);
-	System.out.println(b);
+	String winner = "";
+	while (winner=="") {
+	    //user input for coordinates of piece to move
+	    System.out.println("Enter row of piece to move: ");
+	    int pr = Keyboard.readInt();
+	    System.out.println("Enter column of piece to move: ");
+	    int pc = Keyboard.readInt();
+	    //user input for coordinates to move to
+	    System.out.println("Enter row of place to move to: ");
+	    int mr = Keyboard.readInt();
+	    System.out.println("Enter column of place to move to: ");
+	    int mc = Keyboard.readInt();
+	    b.move(pr,pc,mr,mc);
+	    System.out.println(b);
+	    //if (b.checkWin()) {winner="player";}
+	    //Other.nextMove(b);
+	    //System.out.println(b);
+	    //if (b.checkWin()) {winner="opponent";}
+	}
     }
 
 }
