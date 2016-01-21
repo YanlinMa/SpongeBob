@@ -56,7 +56,27 @@ DEVLOG
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1/19 (not done yet!)
+1/19 
+- worked on Board.java
+  DONE BY: hyketwig
+  
+- researched graphics
+  DONE BY: Andrea
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/20
+- working Board.java
+- started untested random AI
+  DONE BY: hyketwig
+  
+- worked on Checkers.java and user input
+  DONE BY: Andrea
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/21
 - complete barebones implementation (working one-player model)
-- follow to-do list schedule
+- add kings and jumps (not mult jumps yet)
+- plan and set up pice identification system
   DONE BY: ???
