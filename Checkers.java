@@ -34,22 +34,28 @@ public class Checkers {
     public void play(int level) {
 	boolean win = false; // WHAT ABOUT TIE GAMES? may need a boolean to record who the winner is / if tie
 	//until win = true, run following code
-	Board b = new Board();
-	System.out.println(b);
-	//user input piece to move
-	int x = Keyboard.readInt();
+	Board game = new Board();
+	System.out.println(game);
+	//user input for piece to move
+	//int x = Keyboard.readInt();
+	//user input coordinates of piece they want to move
+	int px = Keyboard.readInt();
+	int py = Keyboard.readInt();
 	//user input for direction to move in (FL, FR, JFL, JFR, BL, BR, JBL, JBR)
-	String y = Keyboard.readString();
+	//String y = Keyboard.readString();
+	//user input coordinates to move this piece to
+	int mx = Keyboard.readInt();
+	int my = Keyboard.readInt();
 	//jumps?
 	//store [pieceNum, moveDirection]
-	b.move(moveArray); // move will convert
-	System.out.println(b);
+	game.move(px,py,mx,my); // move will convert
+	System.out.println(game);
 	//check if win / possibility of other jumps -- loop this
 	//update boolean
 	//if not win, generate opponent move based on level
 	//store in moveArray
-	b.move(moveArray);
-	System.out.println(b);
+	//game.move(moveArray);
+	//System.out.println(game);
 	//check if win
 	//update boolean
 	//if not win, back to user input for which piece to move
