@@ -33,51 +33,49 @@ public class Board {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods
 
+ 
     /*
-    //swap pieces -- should just put this code in move instead of helper?
-    public void swap(int[] pieceToMove, int[] whereToMove) {
-	Piece old = grid[pieceToMove[0]][pieceToMove[1]]; //0 = row, 1 = column?
-	grid[pieceToMove[0]][pieceToMove[1]] =
-	    grid[whereToMove[0]][whereToMove[1]]; //??? cleaner way to do this?
-        grid[whereToMove[0]][whereToMove[1]] = old;
-    }
-
-    
     //method for generating move coordinates based on string input
     //(see comment directly below)
     public void convertToCoord(String in) {
     }
-    
+    */
+
+    //checks if move is ok
+    //no jumps right now, no kings
+    public boolean proper(int r1, int c1, int r2, int c2) {
+	boolean good = false;
+
+	if (((Player)getPiece(r1,c1)).getFriend()) {
+	    if (!getPiece(r2,c2).getStatus()) //if empty spot
+	        good = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1); //if in right row
+	}
+	else {
+	    if (!getPiece(r2,c2).getStatus()) 
+	        good = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
+	}
+
+	return good;	
+    }
 
     //make this take in diff inputs "FL" etc. and convert them? (helper fxn?)
     //do above later-- just use coordinates now
     //so parameters eventually (String[] input)
-    public void move(int[] pieceToMove, int[] whereToMove) {
-
-	//swap
-        swap (pieceToMove, whereToMove);
-
-	//check to see if jump-- if yes, convert that piece's status to false
-	//must match these coordinates (we're only doing one-player)
-	//and piece between must be an Opponent
-	//cleaner way to do this?
-	//CURRENTLY ASSUMES PLAYER MAKES ONLY LEGAL MOVES
-	if (pieceToMove[0] - 2 == whereToMove[0] &&
-	    Math.abs(pieceToMove[1] - whereToMove[1]) == 2) {
-	    if (pieceToMove[1] - whereToMove[1] < 0) 
-		grid[pieceToMove[0] - 1][pieceToMove[1] + 1].setStatus(false); //is this possible?
-	    else
-		grid[pieceToMove[0] - 1][pieceToMove[1] - 1].setStatus(false);
-	}	
-	//check for potential jumps and loop that fxnality til no more
-	//to do later
+    public void move(int r1, int c1, int r2, int c2) {
+	if (proper(r1,c1,r2,c2)) {
+	    boolean stat1 = grid[r1][c1].getStatus();
+	    boolean stat2 = grid[r2][c2].getStatus();
+	    grid[r1][c1].setStatus(!stat1);
+	    grid[r2][c2].setStatus(!stat2);
+	}
     }
 
+
     //return Piece at 
-    public Piece getPiece(int rInd, int cInd) {
-	return grid[rInd][cInd];
-	}
-    */
+    public Piece getPiece(int r, int c) {
+	return grid[r][c];
+    }
+    
     
     //populates grid with Pieces in starting formation
     public void setup() {
@@ -138,6 +136,9 @@ public class Board {
     public static void main(String[] args) {
     
 	Board b = new Board();
+	System.out.println(b);
+
+	b.move(2,2,1,3);
 	System.out.println(b);
 	
     }

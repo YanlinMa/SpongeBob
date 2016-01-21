@@ -15,7 +15,6 @@ public abstract class Piece {
     protected boolean status; // this for dead / alive? wb king?
     protected int pieceNum;
 
-
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods

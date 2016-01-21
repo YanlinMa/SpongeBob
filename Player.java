@@ -31,6 +31,13 @@ public class Player extends Piece {
 	friend = f;
     }
 
+
+    //accessor for friend
+    public boolean getFriend() {
+	return friend;
+    }
+
+
     //overwrite toString()
     public String toString() {
 	String retStr = "";
