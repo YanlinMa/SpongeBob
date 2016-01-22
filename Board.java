@@ -1,16 +1,18 @@
-/* TO THINK ABOUT / DO
-   
-   - are accessors needed for instance variables?
-   - read comments throughout
+/* INFO
+   - contains essential board fxnality w/o levels
+*/
+
+
+/* TO DO:
+
    - implement user-friendly move fxns and its helpers
-   - jump functionality (loop and check for multiple jumps) -- make this check if move is proper (right now it doesn't)
-   probably should implement the user-friendly things first
-   - check if swap and getPiece work
-   - implement remaining methods and check if player can move / jump pieces
+   - king and jump functionality
+   - multiple jump functionality
+   - check win, return winner methods
 
 */
 
-public class Board {
+public abstract class Board {
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
@@ -22,59 +24,44 @@ public class Board {
 
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //constructors
+    //constructor
     
     public Board() {
 	setup();
     }
 
-    
+
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //methods
-
- 
-    /*
-    //method for generating move coordinates based on string input
-    //(see comment directly below)
-    public void convertToCoord(String in) {
-    }
-    */
-
-    //checks if move is ok
-    //no jumps right now, no kings
-    public boolean proper(int r1, int c1, int r2, int c2) {
-	boolean good = false;
-
-	if (((Player)getPiece(r1,c1)).getFriend()) 
-	    if (!getPiece(r2,c2).getStatus()) //if empty spot
-	        good = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1); //if in right row
-	else 
-	    if (!getPiece(r2,c2).getStatus()) 
-	        good = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
-
-	return good;	
-    }
-
-    //make this take in diff inputs "FL" etc. and convert them? (helper fxn?)
-    //do above later-- just use coordinates now
-    //so parameters eventually (String[] input)
-    public void move(int r1, int c1, int r2, int c2) {
-	if (proper(r1,c1,r2,c2)) {
-	    boolean stat1 = grid[r1][c1].getStatus();
-	    boolean stat2 = grid[r2][c2].getStatus();
-	    grid[r1][c1].setStatus(!stat1);
-	    grid[r2][c2].setStatus(!stat2);
-	}
-    }
-
+    //accessors
 
     //return Piece at 
     public Piece getPiece(int r, int c) {
 	return grid[r][c];
     }
+
     
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //helpers
+
+    //checks if within checkerboard
+    public static boolean outOfBounds(int x) {
+	return x < 0 || x > 7; 
+    }
+
     
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //ABSTRACT
+    
+    public abstract void AIMove();
+    
+
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //methods
+
+           
     //populates grid with Pieces in starting formation
     public void setup() {
 	
@@ -106,49 +93,84 @@ public class Board {
 
     }
 
-
     //prints out checkerboard (grid)
     public String toString() {
 	String retStr = "";
 	for (int r = 0; r < 8; r++) {
 	    for (int c = 0; c < 8; c++) {
-	        retStr += grid[r][c];
-	    }
-	    retStr += "\n";
-	    for (int i = 0; i < 64; i++) {
-		retStr += "-";
+	        retStr += grid[r][c] + " ";
 	    }
 	    retStr += "\n";
 	}
 	return retStr;
     }
-    /*
+
+
+    //================================================
+    //moving pieces
+
+    //if usable piece
+    public boolean yourPiece(int r, int c) {
+        return ( ((Player)getPiece(r,c)).getFriend() &&
+		 getPiece(r,c).getStatus() );
+    }
+
+    
+    //checks if move is ok
+    //no jumps right now, no kings
+    public boolean proper(int r1, int c1, int r2, int c2) {
+	boolean prop = !(outOfBounds(r1) ||
+			 outOfBounds(c1) ||
+			 outOfBounds(r2) ||
+			 outOfBounds(c2));
+	prop = getPiece(r1,r2) instanceof Player;
+
+	if (prop) {
+	    if (((Player)getPiece(r1,c1)).getFriend()) 
+		prop = (!getPiece(r2,c2).getStatus() &&
+			(r1 - 1 == r2 && Math.abs(c2 - c1) == 1));
+	    else
+		prop = (!getPiece(r2,c2).getStatus() &&
+			(r1 + 1 == r2 && Math.abs(c2 - c1) == 1));
+	}
+
+	return prop;	
+    }
+
+
+    
+    //'moves' pieces
+    //ASSUMES PROPER ALREADY
+    public void move(int r1, int c1, int r2, int c2) {
+	boolean stat1 = grid[r1][c1].getStatus();
+	boolean stat2 = grid[r2][c2].getStatus();
+	grid[r1][c1].setStatus(!stat1);
+	grid[r2][c2].setStatus(!stat2);
+
+    }
+
+
     //no jumps or kings
     public boolean hasMoves(int r, int c) {
     	boolean moves = false;
-	if ((Player)getPiece(r,c).getFriend()) 
-	    moves = !getPiece(r-1,c+1).getStatus() || !getPiece(r-1,c-1).getStatus();
-	else 
-	    moves = !getPiece(r+1,c+1).getStatus() || !getPiece(r+1,c-1).getStatus();
-    	return moves;
-    }
-    */
-    /*
-    //check for wins (not on UML) -- wb ties? what should it return?
-    //should also return the winner, to add to SOP message in Checkers.java
-    public boolean checkWin() {
-        return true;
-    }
-    */
-
-    public static void main(String[] args) {
-    
-	Board b = new Board();
-	System.out.println(b);
-
-	b.move(2,2,1,3);
-	System.out.println(b);
+	if (((Player)getPiece(r,c)).getFriend()) {
+	    if (r % 2 == 1 && c == 7) //if edge piece
+		moves = !getPiece(r-1,c-1).getStatus();
+	    else if (r % 2 == 0 && c== 0)
+		moves = !getPiece(r-1,c+1).getStatus();
+	    else 
+		moves = !getPiece(r-1,c+1).getStatus() || !getPiece(r-1,c-1).getStatus();
+	}
+	else {
+	    if (r % 2 == 1 && c == 7) //if edge piece
+		moves = !getPiece(r+1,c-1).getStatus();
+	    else if (r % 2 == 0 && c== 0)
+		moves = !getPiece(r+1,c+1).getStatus();
+	    else
+		moves = !getPiece(r+1,c+1).getStatus() || !getPiece(r+1,c-1).getStatus();
+	}
 	
-    }
-
+	return moves;
+    }   
+    
 }

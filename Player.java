@@ -37,6 +37,10 @@ public class Player extends Piece {
 	return friend;
     }
 
+    public boolean isOpponent() {
+	return !friend;
+    }
+
 
     //overwrite toString()
     public String toString() {
@@ -44,23 +48,23 @@ public class Player extends Piece {
 
 	if (friend) {
 	    if (!getStatus()) 
-		retStr = "|      |";
+		retStr = "[  ]";
 
 	    else if (isKing())
-		retStr = "   RK   ";
+		retStr = "[RK]";
 
 	    else
-		retStr = "   RP   ";
+		retStr = "[RP] ";
 	}
 	else {
 	    if (!getStatus()) 
-		retStr = "|      |";
+		retStr = "[  ]";
 
 	    else if (isKing())
-		retStr = "   OK   ";
+		retStr = "[OK]";
 
 	    else
-		retStr = "   OP   ";
+		retStr = "[OP]";
 	}
 	
 	return retStr;
