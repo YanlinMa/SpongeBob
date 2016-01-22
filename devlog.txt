@@ -76,7 +76,15 @@ DEVLOG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/21
+- continued with V1
+  DONE BY: SpongeBob
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/22
 - complete barebones implementation (working one-player model)
+- finish random AI
 - add kings and jumps (not mult jumps yet)
-- plan and set up pice identification system
+- plan and set up piece identification system
+- levels planning
   DONE BY: ???
