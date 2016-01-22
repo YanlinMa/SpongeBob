@@ -8,7 +8,7 @@
 public class Player extends Piece {
 
     //instance variables
-    boolean friend; //where true is player, false is AI
+    private boolean friend; //where true is player, false is AI
 
     
     //default constructor ?
