@@ -17,7 +17,7 @@ public abstract class Board {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
     
-    private Piece[][] grid = new Piece[8][8];
+    protected Piece[][] grid = new Piece[8][8];
     //private int countP = 0;
     //private int countO = 0;
 
