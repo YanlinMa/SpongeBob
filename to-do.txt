@@ -2,15 +2,13 @@ TO DO
 
 - Implement methods for simple level 0 (or 1?)
    - random move AI
-   > estimated 2 hr - 1/18-1/21
+   > estimated 2 hr - 1/18-1/22
 - Implement controls to prevent illegal user moves and implement pieceNum (?) system
-   > estimated 2 hr - 1/21
-- Develop algorithms for different levels of difficulty
    > estimated 2 hr - 1/21-1/22
-- Game display discussion
-   > estimated 1 hr - 1/21-1/22
+- Develop algorithms for different levels of difficulty
+   > estimated 2 hr - 1/22
 - Implement algorithms for levels
-   > estimated ??? hr - 1/22-1/24
+   > estimated 6? hr - 1/22-1/24
 -- V1 COMPLETE?
 
 - Improve game display
