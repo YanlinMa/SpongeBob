@@ -13,7 +13,7 @@ public abstract class Piece {
     // instance variables
     protected boolean king;
     protected boolean status; // this for dead / alive? wb king?
-    protected int pieceNum;
+    //protected int pieceNum;
 
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
