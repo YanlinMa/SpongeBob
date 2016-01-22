@@ -49,4 +49,11 @@ public class LevelX extends Board {
 
     }
 
+    public static void main(String[] args) {
+	LevelX b = new LevelX();
+	System.out.println(b);
+	b.move(5,1,4,2);
+	System.out.println(b);
+    }
+
 }

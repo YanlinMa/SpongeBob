@@ -36,6 +36,12 @@ public class Player extends Piece {
     public boolean getFriend() {
 	return friend;
     }
+    
+
+
+    public void setFriend(boolean b) {
+	friend = b;
+    }
 
     public boolean isOpponent() {
 	return !friend;
@@ -54,7 +60,7 @@ public class Player extends Piece {
 		retStr = "[RK]";
 
 	    else
-		retStr = "[RP] ";
+		retStr = "[RP]";
 	}
 	else {
 	    if (!getStatus()) 

@@ -140,13 +140,17 @@ public abstract class Board {
 
     
     //'moves' pieces
-    //ASSUMES PROPER ALREADY
-    public void move(int r1, int c1, int r2, int c2) {
-	boolean stat1 = grid[r1][c1].getStatus();
-	boolean stat2 = grid[r2][c2].getStatus();
-	grid[r1][c1].setStatus(!stat1);
-	grid[r2][c2].setStatus(!stat2);
-
+    public boolean move(int r1, int c1, int r2, int c2) {
+	if (proper(r1,c1,r2,c2)) {
+	    boolean side = ((Player)getPiece(r1,c1)).getFriend();
+	    boolean stat1 = getPiece(r1,c1).getStatus();
+	    boolean stat2 = getPiece(r2,c2).getStatus();
+	    getPiece(r1,c1).setStatus(!stat1);
+	    getPiece(r2,c2).setStatus(!stat2);
+	    ((Player)getPiece(r2,c2)).setFriend(side);
+	    return true;
+	}
+	return false;
     }
 
 

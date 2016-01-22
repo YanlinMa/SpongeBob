@@ -21,10 +21,15 @@ public class Checkers {
 
 
     public void play() {
-
+	/*
 	//user input for what level to create correct board
-	//--ask for user input for what level they want here
+	System.out.println("Choose a level (X,1,2,3): ");
+	String level = Keyboard.readString();
+	*/
+	//make board depending on level (currently there is one..)
+	LevelX b = new LevelX();
 
+	System.out.println(b);
 	
 	//user input for coordinates of piece to move
 	System.out.println("Enter row of piece to move: ");
@@ -37,6 +42,21 @@ public class Checkers {
 	System.out.println("Enter column of place to move to: ");
 	int c2 = Keyboard.readInt();
 
+
+	while (!b.move(r1,c1,r2,c2))
+	    System.out.println("Please enter another set of coordinates");
+
+	//b.AIMove();
+
+	System.out.println(b);
+
+	System.out.println(b);
+
+    }
+
+    public int[] getUserMove() {
     }
 
 }
+
+

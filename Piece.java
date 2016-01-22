@@ -30,10 +30,12 @@ public abstract class Piece {
 	return status;
     }
 
+    /*
     //returns pieceNum
     public int getPieceNum() {
 	return pieceNum;
     }
+    */
 
     //sets king
     public void setKing(boolean x) {
@@ -45,10 +47,12 @@ public abstract class Piece {
 	status = x;
     }
 
+    /*
     //sets pieceNum
     public void setPieceNum(int x) {
 	pieceNum =  x;
     }
+    */
 
 
     
