@@ -1,4 +1,4 @@
-public class LevelX extends Board {
+public class LevelM extends Board {
 
     // return random opponent player piece in Board
     // that 
