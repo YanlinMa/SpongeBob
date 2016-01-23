@@ -22,20 +22,17 @@ TO DO
 
 Levels
 
-X
+Easy
 - random move algorithm
 - choose a random piece that has a possible move, choose a random direction to move in
 
-Easy
+Medium
 - if there is a possible move to kill off an opponent's piece, implement this
 - if piece at danger, move away 
 - if both of the above are true, randomly select one to do
 - if no opponent pieces are near, move a random piece forward
 
-Medium
-- 
-
-Hard (??? edit)
+Hard
 - don't move the last row of chess pieces unless absolutely necessary
 - other pieces move to form a pyramid
 - get as many pieces to the opposite side
