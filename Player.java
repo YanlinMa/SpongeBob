@@ -10,12 +10,14 @@ import java.util.ArrayList;
 
 public class Player extends Piece {
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
     private boolean friend; //where true is player, false is AI
     private String ID;
     private ArrayList<String> moves = new ArrayList<String>(); //possible moves
 
-    
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //overloaded constructors
 
     public Player(String i, int r, int c) {
@@ -37,29 +39,47 @@ public class Player extends Piece {
     }
 
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //accessors
+    
     //accessor for friend
     public boolean getFriend() {
 	return friend;
     }
 
+
+    //accessor for ID
     public String getID() {
 	return ID;
     }
 
+
+    //accessor for moves AL
     public ArrayList<String> getMoves() {
 	return moves;
     }
-
-    public String randMove() {
-	return moves.get((int)(Math.random()*moves.size()));
-    }
     
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //mutators
 
+    //set friend
     public void setFriend(boolean b) {
 	friend = b;
     }
 
+
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //methods
+    
+    //get random item from moves
+    public String randMove() {
+	return moves.get((int)(Math.random()*moves.size()));
+    }
+
+
+    //return if player is an opponent
     public boolean isOpponent() {
 	return !friend;
     }

@@ -23,13 +23,13 @@ public class Checkers {
 
 
     public void play() {
-
+	/*
 	//user input for what level to create correct board
 	System.out.println("Choose a level (E,M,H): ");
 	String level = Keyboard.readString();
 	
 	//make board depending on level (currently there is one..)
-	/*
+
         if (level.equals("E")) {
 	    LevelE b = new LevelE();
 	}
@@ -55,18 +55,24 @@ public class Checkers {
 	}
 
         //find row and column of player w this id
-
+	int[] rc = b.findRCbyID(id);
+	int r1 = rc[0];
+	int c1 = rc[1];
+	
 	//user selects which move
-	System.out.print("choose a move: " + b.getPlayer(id).getMoves());
+	System.out.print("choose a move " +
+			 ((Player)b.getPiece(r1,c1)).getMoves() + ": ");
 	String m = Keyboard.readString();
-
-	while (!(b.getPlayer(id).getMoves().contains(m))) {
-	    System.out.print("please choose another move ");
+	
+	while (!(((Player)b.getPiece(r1,c1)).getMoves().contains(m))) {
+	    System.out.print("please choose another move: ");
 	    m = Keyboard.readString();
 	}
+	
+	//find row and column for move
+	
 
-	//if-else statements finding row and column for move
-
+	/*
 	//move users piece
 	b.move(r1,c1,r2,c2);
 
@@ -75,14 +81,14 @@ public class Checkers {
 	//call b.move() on those rows and columns
 	       
 	System.out.println(b);
+	*/
+    }
+
+   
+    public int[] findRCbyM(String m) {
 
     }
     
-    /*
-    public int[] getUserMove() {
-	
-    }
-    */
 
 }
 

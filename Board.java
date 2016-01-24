@@ -47,17 +47,36 @@ public abstract class Board {
 	return grid[r][c];
     }
 
-    //return player by ID
-    //only use when certain of existence
-    public Player getPlayer(String i) {
-	Player ret = new Player("A",1,2); 
-	for (Player x : movables) {
-	    if (x.getID() == i)
-		ret = x;
+    //assumes Player exists so only use in that context
+    public int[] findRCbyID(String id) {
+	int[] ret = new int[2];
+	for (int r = 0; r < 8; r++) {
+	    for (int c = 0; c < 8; c++) {
+		if (grid[r][c] instanceof Player)
+		    if (((Player)grid[r][c]).getID().equals(id)) {
+			ret[0] = r;
+			ret[1] = c;
+		    }
+	    }
 	}
 	return ret;
     }
 
+    //get Player by ID
+    public Player getPlayer(String id) {
+	int[] rc = findRCbyID(id);
+	int r = rc[0];
+	int c = rc[1];
+	if (getPiece(r,c) instanceof Player)
+	    return getPlayerRC(r,c);
+	return null;
+    }
+
+    
+    //get Player by rc
+    public Player getPlayerRC(int r, int c) {
+	return (Player)getPiece(r,c);
+    }
     
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -161,7 +180,7 @@ public abstract class Board {
     //if usable piece
     public boolean contains(String s) {
 	for (Player x : friends) {
-	    if (x.getID() == s)
+	    if (x.getID().equals(s))
 		return true;
 	}
 	return false;
@@ -205,47 +224,7 @@ public abstract class Board {
 	}
 	return false;
     }
-
-/*
-    //move for players using id
-    public void move(String id, String m) {
-	int r = getPlayer(id).row;
-	int c = getPlayer(id).col;
-
-	if (getPlayer(id).getFriend()) {
-	    if (m == "FL")
-		move(r,c,r-1,c+1,true);
-	    else //(m == "FR")
-		move(r,c,r-1,c-1,true);
-	}
-	else {
-	    if (m == "FR")
-		move(r,c,r+1,c+1,false);
-	    else //(m == "FL")
-		move(r,c,r+1,c-1,false);
-
-	}
-    }
-*/
-    /*
-    //no jumps or kings
-    public boolean hasMoves(int r, int c) {
-    	boolean moves = getPiece(r,c).getStatus();
-
-	if (moves) {
-	    if (((Player)getPiece(r,c)).getFriend()) 
-		moves = proper(r,c,r-1,c-1) || proper(r,c,r-1,c+1);
-	    else 
-		moves = proper(r,c,r+1,c+1) || proper(r,c,r+1,c-1);
-	}
-	
-	return moves;
-    }
-    */
-
-    public Player getPlayerRC(int r, int c) {
-	return (Player)getPiece(r,c);
-    }
+    
 
     public boolean addMoves(int r, int c) {
 	getPlayerRC(r,c).getMoves().clear();
