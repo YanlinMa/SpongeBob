@@ -1,22 +1,6 @@
 import java.util.ArrayList;
 
 
-/* INFO
-   - contains essential board fxnality w/o levels
-*/
-
-
-/* TO DO:
-
-   - implement user-friendly move fxns and its helpers
-   - king and jump functionality
-   - multiple jump functionality
-   - check win, return winner methods
-   - hasMoves() may be simplified using proper()
-   - write movesLeftOnBoard()
-
-*/
-
 public abstract class Board {
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

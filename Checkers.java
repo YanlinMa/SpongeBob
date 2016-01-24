@@ -1,11 +1,7 @@
 /* TO DO:
-   - split play function into separate helpers?
-   - two-player functionality (only if time allows)
    - elaborate on welcome message, instructions
    - winning / tie games
    - play again features
-   - make sure user inputs are ok (default selections or while loops)
-   - write direction function
  */
 
 
