@@ -104,6 +104,8 @@ DEVLOG
 - worked on LevelM.java
 - commented algorithm for LevelH.java
   DONE BY: Andrea
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - complete barebones implementation (working one-player model)
 - finish random AI
