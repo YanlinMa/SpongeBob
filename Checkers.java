@@ -43,7 +43,7 @@ public class Checkers {
 	*/
 	LevelE b = new LevelE();
 
-	while (b.movables().size() > 0) {
+	while (b.movables.size() > 0) {
 	    //print board
 	    System.out.println(b);
 	
