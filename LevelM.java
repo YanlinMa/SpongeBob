@@ -26,15 +26,20 @@ public class LevelM extends Board {
 		int r = randP[0];
 		int c = randP[1];
 		if (getPiece(r+1,c+1) instanceof Player) {
-			move(r,c,r+2,c+2);
-			//kill off player piece at (r+1,c+1)
+			if (getPiece(r+2,c+2) instanceof Empty) {
+				move(r,c,r+2,c+2);
+				//kill off player piece at (r+1,c+1)
+			}
 		}
 		else if (getPiece(r+1,c-1) instanceof Player) {
-			move(r,c,r+2,c-2);
-			//kill off player piece at (r+1,c-1)
+			if (getPiece(r+2,c-2) instanceof Empty) {
+				move(r,c,r+2,c-2);
+				//kill off player piece at (r+1,c-1)
+			}
 		}
 	}
-
+	
+	
     // move random piece randomly, no jumps / kings
     public void AIMove() {
   	int[] coo = randPiece();
