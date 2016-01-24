@@ -50,7 +50,7 @@ public class LevelE extends Board {
     }
 
     public static void main(String[] args) {
-	LevelX b = new LevelX();
+	LevelE b = new LevelE();
 	System.out.println(b);
 	b.move(5,1,4,2);
 	System.out.println(b);
