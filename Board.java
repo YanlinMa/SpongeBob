@@ -215,10 +215,15 @@ public abstract class Board {
 
 	    if (prop) {
 		if (((Player)getPiece(r1,c1)).getFriend()) {
-		    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move
+		    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move forward
 
 		    if (!prop) {
-			//check for jumps
+			//check for jumps and king moves
+
+			if ((getPiece(r1,c1) instanceof Player)) {
+			    if (getPlayerRC(r1,c1).isKing())
+				prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
+			}
 
 			if ((inBounds(r1-1) && inBounds(c1+1))
 			    && getPiece(r1 - 1,c1 + 1) instanceof Player) {
@@ -233,7 +238,12 @@ public abstract class Board {
 		    }
 		}
 		else {
-		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move
+		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move forward
+
+		    if ((!prop && getPiece(r1,c1) instanceof Player)) {
+			if (getPlayerRC(r1,c1).isKing())
+			    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);
+		    }
 
 		    //check for jumps
 		    if (!prop && inBounds(r1+1) && inBounds(c1+1)
@@ -319,6 +329,15 @@ public abstract class Board {
 	    getPiece(r1,c1).setStatus(!stat1);
 	    getPiece(r2,c2).setStatus(!stat2);
 	    ((Player)getPiece(r2,c2)).setFriend(side); //set appropriate side
+
+	    if (side) { //set as king if appropriate
+		if (r2 == 0)
+		    ((Player)getPiece(r2,c2)).setKing(true);
+	    }
+	    else {
+		if (r2 == 7)
+		    ((Player)getPiece(r2,c2)).setKing(true);
+	    }
 	    
 	    popALists(); //update movables
 	    
@@ -328,7 +347,7 @@ public abstract class Board {
     
 
     //add to the player's moves AL
-    //return true if has moves, false otherwise
+    //return true if has moves, false otherwise -- JUMPING BACKWARDS NOT IMPLEMENTED
     public boolean addMoves(int r, int c) {
 	getPlayerRC(r,c).getMoves().clear();
 
@@ -354,6 +373,24 @@ public abstract class Board {
 		getPlayerRC(r,c).getMoves().add("JR");
 		hasMoves++;
 	    }
+	    if (proper(r,c,r+1,c-1)) {
+		getPlayerRC(r,c).getMoves().add("BL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r+1,c+1)) {
+		getPlayerRC(r,c).getMoves().add("BR");
+		hasMoves++;
+	    }
+	    /*
+	    if (proper(r,c,r+2,c-2)) {
+		getPlayerRC(r,c).getMoves().add("JBL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r+2,c+2)) {
+		getPlayerRC(r,c).getMoves().add("JBR");
+		hasMoves++;
+	    }
+	    */
 	}
 	else {
 	    if ( proper(r,c,r+1,c-1)) {
@@ -371,6 +408,24 @@ public abstract class Board {
 	    if (proper(r,c,r+2,c+2)) {
 		getPlayerRC(r,c).getMoves().add("JR");
 	    }
+	    if (proper(r,c,r-1,c-1)) {
+		getPlayerRC(r,c).getMoves().add("BL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r-1,c+1)) {
+		getPlayerRC(r,c).getMoves().add("BR");
+		hasMoves++;
+	    }
+	    /*
+	    if (proper(r,c,r-2,c-2)) {
+		getPlayerRC(r,c).getMoves().add("JBL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r-2,c+2)) {
+		getPlayerRC(r,c).getMoves().add("JBR");
+		hasMoves++;
+	    }
+	    */
 	}
 	return hasMoves > 0;
     }
