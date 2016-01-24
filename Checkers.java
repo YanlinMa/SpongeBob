@@ -86,6 +86,7 @@ public class Checkers {
 	    //call for AI move
 	    String[] ai = b.AIMove();
 	    id = ai[0];
+	    System.out.println("ID: " + id);
 	    m = ai[1];
 
 	    //find row and column of player w this id

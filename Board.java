@@ -98,8 +98,8 @@ public abstract class Board {
     //helpers
 
     //checks if within checkerboard
-    public static boolean outOfBounds(int x) {
-	return x < 0 || x > 7; 
+    public static boolean inBounds(int x) {
+	return x >= 0 && x <= 7;
     }
 
 
@@ -205,42 +205,44 @@ public abstract class Board {
     //checks if move is ok
     //no jumps right now, no kings
     public boolean proper(int r1, int c1, int r2, int c2) {
-	boolean prop = !(outOfBounds(r1) ||
-			 outOfBounds(c1) ||
-			 outOfBounds(r2) ||
-			 outOfBounds(c2));
+	boolean prop = (inBounds(r1) &&
+			inBounds(c1) &&
+			inBounds(r2) &&
+			inBounds(c2));
 
 	if (prop && getPiece(r2,c2) instanceof Player) {
 	    prop = !getPiece(r2,c2).getStatus(); //other spot must be blank
+
 	    if (prop) {
 		if (((Player)getPiece(r1,c1)).getFriend()) {
 		    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move
 
-		    //check for jumps
-		    if (!prop && !outOfBounds(r1-1) && !outOfBounds(c1+1)
-			&& getPiece(r1 - 1,c1 + 1) instanceof Player) { //check if outofBounds
-			
-			prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
-				(getPlayerRC(r1-1,c1+1).isOpponent()));
-		    }
-		    if (!prop && !outOfBounds(r1-1) && !outOfBounds(c1-1)
-			&& getPiece(r1 - 1,c1 - 1) instanceof Player) {
+		    if (!prop) {
+			//check for jumps
 
-			prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
-				getPlayerRC(r1-1,c1+1).isOpponent());
+			if ((inBounds(r1-1) && inBounds(c1+1))
+			    && getPiece(r1 - 1,c1 + 1) instanceof Player) {
+				prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
+					(getPlayerRC(r1-1,c1+1).isOpponent()));
+			}
+			if ((inBounds(r1-1) && inBounds(c1-1))
+			    && getPiece(r1 - 1,c1 - 1) instanceof Player) {
+			    prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
+				    getPlayerRC(r1-1,c1-1).isOpponent());
+			}
 		    }
 		}
 		else {
 		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move
 
 		    //check for jumps
-		    if (!prop && !outOfBounds(r1+1) && !outOfBounds(c1+1)
+		    if (!prop && inBounds(r1+1) && inBounds(c1+1)
 			&& getPiece(r1 + 1,c1 + 1) instanceof Player) { //check if outofBounds
 			
 			prop = ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
 				(getPlayerRC(r1+1,c1+1).getFriend()));
 		    }
-		    if (!prop && !outOfBounds(r1+1) && !outOfBounds(c1-1)
+		    if (!prop && inBounds(r1+1) && inBounds(c1-1)
 			&& getPiece(r1 + 1,c1 - 1) instanceof Player) {
 
 			prop = ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
@@ -264,7 +266,7 @@ public abstract class Board {
 	    getPiece(r1,c1).setStatus(!stat1);
 	    getPiece(r2,c2).setStatus(!stat2);
 	    ((Player)getPiece(r2,c2)).setFriend(side); //set appropriate side
-	    System.out.println("here");
+
 	    popALists(); //update movables
 	    return true;
 	}
