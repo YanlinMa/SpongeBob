@@ -109,6 +109,15 @@ DEVLOG
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+1/24
+-
+  DONE BY: hyketwig
+  
+- 
+  DONE BY: Andrea
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 - complete barebones implementation (working one-player model)
 - finish random AI
 - add kings and jumps (not mult jumps yet)
