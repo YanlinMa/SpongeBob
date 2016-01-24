@@ -70,14 +70,19 @@ DEVLOG
 - started untested random AI
   DONE BY: hyketwig
   
-- worked on Checkers.java and user input
+- worked on Checkers.java
+- added code to process user input
   DONE BY: Andrea
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/21
-- continued with V1
+- continued with V1 (easiest AI)
   DONE BY: SpongeBob
+  
+- edited flowchart
+- answered prompts to HW58
+  DONE BY: Andrea
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
