@@ -163,7 +163,7 @@ public abstract class Board {
 			if (addMoves(r,c)) 
 			    friends.add(getPlayerRC(r,c));
 		    }
-		    else if (addMoves(r,c) && getPlayerRC(r,c).getStatus()) {
+		    else if (addMoves(r,c)) {
 			opponents.add(getPlayerRC(r,c));
 		    }
 		}
@@ -211,12 +211,43 @@ public abstract class Board {
 			 outOfBounds(c2));
 
 	if (prop && getPiece(r2,c2) instanceof Player) {
-	    if (((Player)getPiece(r1,c1)).getFriend()) 
-		prop = (!getPiece(r2,c2).getStatus() &&
-			(r1 - 1 == r2 && Math.abs(c2 - c1) == 1));
-	    else
-		prop = (!getPiece(r2,c2).getStatus() &&
-			(r1 + 1 == r2 && Math.abs(c2 - c1) == 1));
+	    prop = !getPiece(r2,c2).getStatus(); //other spot must be blank
+	    if (prop) {
+		if (((Player)getPiece(r1,c1)).getFriend()) {
+		    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move
+
+		    //check for jumps
+		    if (!prop && !outOfBounds(r1-1) && !outOfBounds(c1+1)
+			&& getPiece(r1 - 1,c1 + 1) instanceof Player) { //check if outofBounds
+			
+			prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
+				(getPlayerRC(r1-1,c1+1).isOpponent()));
+		    }
+		    if (!prop && !outOfBounds(r1-1) && !outOfBounds(c1-1)
+			&& getPiece(r1 - 1,c1 - 1) instanceof Player) {
+
+			prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
+				getPlayerRC(r1-1,c1+1).isOpponent());
+		    }
+		}
+		else {
+		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move
+
+		    //check for jumps
+		    if (!prop && !outOfBounds(r1+1) && !outOfBounds(c1+1)
+			&& getPiece(r1 + 1,c1 + 1) instanceof Player) { //check if outofBounds
+			
+			prop = ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
+				(getPlayerRC(r1+1,c1+1).getFriend()));
+		    }
+		    if (!prop && !outOfBounds(r1+1) && !outOfBounds(c1-1)
+			&& getPiece(r1 + 1,c1 - 1) instanceof Player) {
+
+			prop = ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
+				getPlayerRC(r1+1,c1-1).getFriend());
+		    }
+		}
+	    }
 	}
 
 	return prop;	
@@ -233,7 +264,7 @@ public abstract class Board {
 	    getPiece(r1,c1).setStatus(!stat1);
 	    getPiece(r2,c2).setStatus(!stat2);
 	    ((Player)getPiece(r2,c2)).setFriend(side); //set appropriate side
-
+	    System.out.println("here");
 	    popALists(); //update movables
 	    return true;
 	}
@@ -241,8 +272,14 @@ public abstract class Board {
     }
     
 
+    //add to the player's moves AL
+    //return true if has moves, false otherwise
     public boolean addMoves(int r, int c) {
 	getPlayerRC(r,c).getMoves().clear();
+
+	if (!getPlayerRC(r,c).getStatus())
+	    return false;
+	
 	int hasMoves = 0;
 	
 	if (getPlayerRC(r,c).getFriend()) {
@@ -254,6 +291,14 @@ public abstract class Board {
 		getPlayerRC(r,c).getMoves().add("FR");
 		hasMoves++;
 	    }
+	    if (proper(r,c,r-2,c-2)) {
+		getPlayerRC(r,c).getMoves().add("JL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r-2,c+2)) {
+		getPlayerRC(r,c).getMoves().add("JR");
+		hasMoves++;
+	    }
 	}
 	else {
 	    if ( proper(r,c,r+1,c-1)) {
@@ -263,6 +308,13 @@ public abstract class Board {
 	    if (proper(r,c,r+1,c+1)) {
 		getPlayerRC(r,c).getMoves().add("FR");
 		hasMoves++;
+	    }
+	    if (proper(r,c,r+2,c-2)) {
+		getPlayerRC(r,c).getMoves().add("JL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r+2,c+2)) {
+		getPlayerRC(r,c).getMoves().add("JR");
 	    }
 	}
 	return hasMoves > 0;
