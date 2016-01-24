@@ -103,6 +103,7 @@ DEVLOG
 - edited LevelE.java
 - worked on LevelM.java
 - commented algorithm for LevelH.java
+- revised README.txt
   DONE BY: Andrea
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
