@@ -77,8 +77,12 @@ DEVLOG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/21
-- continued with V1 (easiest AI)
+- continued with V1
+- implemented easiest AI level
   DONE BY: SpongeBob
+  
+- edited UML diagram
+  DONE BY: hyketwig
   
 - edited flowchart
 - answered prompts to HW58
@@ -87,9 +91,22 @@ DEVLOG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/22
+- worked on LevelE.java, Board.java, Checkers.java
+  DONE BY: hyketwig
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1/23
+-
+  DONE BY: hyketwig
+  
+- edited LevelE.java
+- worked on LevelM.java
+- commented algorithm for LevelH.java
+  DONE BY: Andrea
+
 - complete barebones implementation (working one-player model)
 - finish random AI
 - add kings and jumps (not mult jumps yet)
 - plan and set up piece identification system
 - levels planning
-  DONE BY: ???
