@@ -255,22 +255,75 @@ public abstract class Board {
 	return prop;	
     }
 
+
+    public boolean jump(int r1, int c1, int r2, int c2) {
+	
+	if (getPlayerRC(r1-1,c1-1).getFriend()) {
+	    if ((inBounds(r1-1) && inBounds(c1+1))
+		&& getPiece(r1 - 1,c1 + 1) instanceof Player) {
+	        if ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
+		    (getPlayerRC(r1-1,c1+1).isOpponent())) {
+		    getPlayerRC(r1-1,c1+1).setStatus(false);
+		    return true;
+		}
+	    }
+	    if ((inBounds(r1-1) && inBounds(c1-1))
+		&& getPiece(r1 - 1,c1 - 1) instanceof Player) {
+		if ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
+		    getPlayerRC(r1-1,c1-1).isOpponent()) {
+		    getPlayerRC(r1-1,c1-1).setStatus(false);
+		    return true;
+		}
+	    }
+	}
+
+	else {
+	    if (inBounds(r1+1) && inBounds(c1+1)
+		&& getPiece(r1 + 1,c1 + 1) instanceof Player) { //check if outofBounds
+			
+	        if ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
+		    (getPlayerRC(r1+1,c1+1).getFriend())) {
+		    getPlayerRC(r1+1,c1+1).setStatus(false);
+		    return true;
+		}
+	    }
+	    if (inBounds(r1+1) && inBounds(c1-1)
+		&& getPiece(r1 + 1,c1 - 1) instanceof Player) {
+
+	        if ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
+		    getPlayerRC(r1+1,c1-1).getFriend()) {
+		    getPlayerRC(r1+1,c1-1).setStatus(false);
+		    return true;
+		}
+	    }
+	}
+	return false;
+
+    }
+    
     
     //'moves' pieces
-    //returns true if move successful, false otherwise
+    //returns true if move was jump
     public boolean move(int r1, int c1, int r2, int c2) {
+	boolean isJump = false;
+	
 	if (proper(r1,c1,r2,c2)) {
+	    
+	    if (jump(r1,c1,r2,c2))
+		isJump = true;//rm jumped piece if is jump
+
+	    //move piece
 	    boolean side = (getPlayerRC(r1,c1).getFriend());
 	    boolean stat1 = getPiece(r1,c1).getStatus();
 	    boolean stat2 = getPiece(r2,c2).getStatus();
 	    getPiece(r1,c1).setStatus(!stat1);
 	    getPiece(r2,c2).setStatus(!stat2);
 	    ((Player)getPiece(r2,c2)).setFriend(side); //set appropriate side
-
+	    
 	    popALists(); //update movables
-	    return true;
+	    
 	}
-	return false;
+	return isJump;
     }
     
 

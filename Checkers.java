@@ -77,16 +77,23 @@ public class Checkers {
 	    int c2 = rc[1];
 
 
-	    //move users piece
-	    b.move(r1,c1,r2,c2);
-	    System.out.println(b);
+	    //move users piece, allow for extra jumps if possible
+	    while (b.move(r1,c1,r2,c2)) {
+		r1 = r2;
+		c1 = c2; //with current coordinates
+		System.out.println("extra jump? please choose another move: ");
+		m = Keyboard.readString();
+		rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
+		r2 = rc[0];
+		c2 = rc[1];
+		System.out.println(b);
+	    }
 
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	    //call for AI move
 	    String[] ai = b.AIMove();
 	    id = ai[0];
-	    System.out.println("ID: " + id);
 	    m = ai[1];
 
 	    //find row and column of player w this id
@@ -99,8 +106,17 @@ public class Checkers {
 	    r2 = rc[0];
 	    c2 = rc[1];
 
-	    //move AI piece
-	    b.move(r1,c1,r2,c2);
+
+	    //move AI's piece, allow for extra jumps if possible
+	    while (b.move(r1,c1,r2,c2)) {
+		r1 = r2;
+		c1 = c2; //with current coordinates
+		m = b.getPlayer(id).randMove();
+		rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
+		r2 = rc[0];
+		c2 = rc[1];
+		System.out.println(b);
+	    }
 	
 	    System.out.println(b);
 	}
