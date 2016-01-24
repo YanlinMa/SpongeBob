@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class LevelE extends Board {
     
-    // move random opponent piece randomly, no kings
+    //move random opponent piece randomly, no kings
     //assumes there are moves left
     public String[] AIMove() {
 	String[] ret = new String[2];
