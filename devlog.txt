@@ -97,7 +97,8 @@ DEVLOG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/23
--
+- set up movables system
+- worked on LevelE.java and others
   DONE BY: hyketwig
   
 - edited LevelE.java
