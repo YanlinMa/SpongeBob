@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 /*TO THINK ABOUT / DO:
   
   - need default constructor?
   - actually make it look like a piece
+  - get rid of rows in Piece.java and here
 
 */
 
@@ -9,32 +12,46 @@ public class Player extends Piece {
 
     //instance variables
     private boolean friend; //where true is player, false is AI
+    private String ID;
+    private ArrayList<String> moves = new ArrayList<String>(); //possible moves
 
-    
-    //default constructor ?
-    public Player() {
-	king = false;
-	status = true;
-	friend = true;
-    }
     
     //overloaded constructors
 
-    public Player(boolean f) {
-	this();
+    public Player(String i, int r, int c) {
+	super();
+	friend = true;
+	row = r;
+	col = c;
+	ID = i + col;
+    }
+
+    public Player(String i, int r, int c, boolean f) {
+	this(i,r,c);
 	friend = f;
     }
     
-    public Player(boolean s, boolean f) {
-	this();
+    public Player(String i, int r, int c, boolean s, boolean f) {
+        this(i,r,c,f);
 	status = s;
-	friend = f;
     }
 
 
     //accessor for friend
     public boolean getFriend() {
 	return friend;
+    }
+
+    public String getID() {
+	return ID;
+    }
+
+    public ArrayList<String> getMoves() {
+	return moves;
+    }
+
+    public String randMove() {
+	return moves.get((int)(Math.random()*moves.size()));
     }
     
 
@@ -46,31 +63,31 @@ public class Player extends Piece {
     public boolean isOpponent() {
 	return !friend;
     }
-
-
+    
+    
     //overwrite toString()
     public String toString() {
 	String retStr = "";
 
 	if (friend) {
 	    if (!getStatus()) 
-		retStr = "[  ]";
+		retStr = "[   ]";
 
 	    else if (isKing())
-		retStr = "[RK]";
+		retStr = "[" + ID + "K]";
 
 	    else
-		retStr = "[RP]";
+		retStr = "[" + ID + "P]";
 	}
 	else {
 	    if (!getStatus()) 
-		retStr = "[  ]";
+		retStr = "[   ]";
 
 	    else if (isKing())
-		retStr = "[OK]";
+		retStr = "[AIK]";
 
 	    else
-		retStr = "[OP]";
+		retStr = "[AIP]";
 	}
 	
 	return retStr;

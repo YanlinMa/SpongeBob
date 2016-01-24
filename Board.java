@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+
 /* INFO
    - contains essential board fxnality w/o levels
 */
@@ -9,6 +12,9 @@
    - king and jump functionality
    - multiple jump functionality
    - check win, return winner methods
+   - hasMoves() may be simplified using proper()
+   - write movesLeftOnBoard()
+   - NEED PROPER()? AND OTHER FXNS?
 
 */
 
@@ -18,9 +24,9 @@ public abstract class Board {
     //instance variables
     
     protected Piece[][] grid = new Piece[8][8];
-    //private int countP = 0;
-    //private int countO = 0;
-
+    protected ArrayList<Player> movables = new ArrayList<Player>(); //pieces w moves left
+    protected ArrayList<Player> opponents = new ArrayList<Player>(); //opponents w moves left
+    protected ArrayList<Player> friends = new ArrayList<Player>(); //friends w moves left
 
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,9 +34,10 @@ public abstract class Board {
     
     public Board() {
 	setup();
+        popALists();
     }
 
-
+    
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //accessors
@@ -38,6 +45,17 @@ public abstract class Board {
     //return Piece at 
     public Piece getPiece(int r, int c) {
 	return grid[r][c];
+    }
+
+    //return player by ID
+    //only use when certain of existence
+    public Player getPlayer(String i) {
+	Player ret = new Player("A",1,2); 
+	for (Player x : movables) {
+	    if (x.getID() == i)
+		ret = x;
+	}
+	return ret;
     }
 
     
@@ -50,11 +68,13 @@ public abstract class Board {
 	return x < 0 || x > 7; 
     }
 
+
+    
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //ABSTRACT
     
-    public abstract void AIMove();
+    public abstract String[] AIMove();
     
 
     
@@ -65,40 +85,69 @@ public abstract class Board {
     //populates grid with Pieces in starting formation
     public void setup() {
 	
-	for (int c = 0; c < 8; c+=2) {	    	    
-	    grid[0][c] = new Player(false);
+	for (int c = 0; c < 8; c+=2) {
+
+	    grid[0][c] = new Player("A",0,c,false);
 	    grid[0][c+1] = new Empty();
-	    
+
 	    grid[1][c] = new Empty();
-	    grid[1][c+1] = new Player(false);
+	    grid[1][c+1] = new Player("B",1,c+1,false);
 	    
-	    grid[2][c] = new Player(false);
+	    grid[2][c] = new Player("C",2,c,false);
 	    grid[2][c+1] = new Empty();
 
 	    grid[5][c] = new Empty();
-	    grid[5][c+1] = new Player();
+	    grid[5][c+1] = new Player("D",5,c+1);
 
-	    grid[6][c] = new Player();
+	    grid[6][c] = new Player("E",6,c);
 	    grid[6][c+1] = new Empty();
 
 	    grid[7][c] = new Empty();
-	    grid[7][c+1] = new Player();
+	    grid[7][c+1] = new Player("F",7,c+1);
 	    
 	    grid[3][c] = new Empty(); 
-	    grid[3][c+1] = new Player(false, false);
+	    grid[3][c+1] = new Player("G",3,c+1,false, false);
 	    
-	    grid[4][c] = new Player(false, false);
+	    grid[4][c] = new Player("H",4,c,false, false);
 	    grid[4][c+1] = new Empty();
 	}
 
     }
 
+
+
+    //populate ALs
+    public void popALists() {
+	movables.clear();
+	opponents.clear();
+	friends.clear();
+	
+	for (int r = 0; r < 8; r++) {
+	    for (int c = 0; c < 8; c++) {
+		if (getPiece(r,c) instanceof Player) {
+		    if (((Player)getPiece(r,c)).getFriend()) {
+			if (addMoves(r,c)) {
+			    friends.add((Player)getPiece(r,c));
+			}
+			else if (addMoves(r,c))
+			    opponents.add((Player)getPiece(r,c));
+		    }
+		}
+	    }
+	}
+	
+	movables.addAll(opponents);
+	movables.addAll(friends);
+    }
+
+    
+    
     //prints out checkerboard (grid)
     public String toString() {
 	String retStr = "";
 	for (int r = 0; r < 8; r++) {
 	    for (int c = 0; c < 8; c++) {
-	        retStr += grid[r][c] + " ";
+	        retStr += grid[r][c] + "\t";
 	    }
 	    retStr += "\n";
 	}
@@ -110,9 +159,12 @@ public abstract class Board {
     //moving pieces
 
     //if usable piece
-    public boolean yourPiece(int r, int c) {
-        return ( ((Player)getPiece(r,c)).getFriend() &&
-		 getPiece(r,c).getStatus() );
+    public boolean contains(String s) {
+	for (Player x : friends) {
+	    if (x.getID() == s)
+		return true;
+	}
+	return false;
     }
 
     
@@ -123,9 +175,8 @@ public abstract class Board {
 			 outOfBounds(c1) ||
 			 outOfBounds(r2) ||
 			 outOfBounds(c2));
-	prop = getPiece(r1,r2) instanceof Player;
 
-	if (prop) {
+	if (prop && getPiece(r2,c2) instanceof Player) {
 	    if (((Player)getPiece(r1,c1)).getFriend()) 
 		prop = (!getPiece(r2,c2).getStatus() &&
 			(r1 - 1 == r2 && Math.abs(c2 - c1) == 1));
@@ -137,44 +188,90 @@ public abstract class Board {
 	return prop;	
     }
 
-
     
     //'moves' pieces
+    //returns true if move successful, false otherwise
     public boolean move(int r1, int c1, int r2, int c2) {
 	if (proper(r1,c1,r2,c2)) {
-	    boolean side = ((Player)getPiece(r1,c1)).getFriend();
+	    boolean side = ((Player)getPiece(r2,c2)).getFriend();
 	    boolean stat1 = getPiece(r1,c1).getStatus();
 	    boolean stat2 = getPiece(r2,c2).getStatus();
 	    getPiece(r1,c1).setStatus(!stat1);
 	    getPiece(r2,c2).setStatus(!stat2);
-	    ((Player)getPiece(r2,c2)).setFriend(side);
+	    ((Player)getPiece(r2,c2)).setFriend(side); //set appropriate side
+
+	    popALists(); //update movables
 	    return true;
 	}
 	return false;
     }
 
+/*
+    //move for players using id
+    public void move(String id, String m) {
+	int r = getPlayer(id).row;
+	int c = getPlayer(id).col;
 
-    //no jumps or kings
-    public boolean hasMoves(int r, int c) {
-    	boolean moves = false;
-	if (((Player)getPiece(r,c)).getFriend()) {
-	    if (r % 2 == 1 && c == 7) //if edge piece
-		moves = !getPiece(r-1,c-1).getStatus();
-	    else if (r % 2 == 0 && c== 0)
-		moves = !getPiece(r-1,c+1).getStatus();
-	    else 
-		moves = !getPiece(r-1,c+1).getStatus() || !getPiece(r-1,c-1).getStatus();
+	if (getPlayer(id).getFriend()) {
+	    if (m == "FL")
+		move(r,c,r-1,c+1,true);
+	    else //(m == "FR")
+		move(r,c,r-1,c-1,true);
 	}
 	else {
-	    if (r % 2 == 1 && c == 7) //if edge piece
-		moves = !getPiece(r+1,c-1).getStatus();
-	    else if (r % 2 == 0 && c== 0)
-		moves = !getPiece(r+1,c+1).getStatus();
-	    else
-		moves = !getPiece(r+1,c+1).getStatus() || !getPiece(r+1,c-1).getStatus();
+	    if (m == "FR")
+		move(r,c,r+1,c+1,false);
+	    else //(m == "FL")
+		move(r,c,r+1,c-1,false);
+
+	}
+    }
+*/
+    /*
+    //no jumps or kings
+    public boolean hasMoves(int r, int c) {
+    	boolean moves = getPiece(r,c).getStatus();
+
+	if (moves) {
+	    if (((Player)getPiece(r,c)).getFriend()) 
+		moves = proper(r,c,r-1,c-1) || proper(r,c,r-1,c+1);
+	    else 
+		moves = proper(r,c,r+1,c+1) || proper(r,c,r+1,c-1);
 	}
 	
 	return moves;
-    }   
-    
+    }
+    */
+
+    public Player getPlayerRC(int r, int c) {
+	return (Player)getPiece(r,c);
+    }
+
+    public boolean addMoves(int r, int c) {
+	getPlayerRC(r,c).getMoves().clear();
+	int hasMoves = 0;
+	
+	if (getPlayerRC(r,c).getFriend()) {
+	    if ( proper(r,c,r-1,c-1)) {
+		getPlayerRC(r,c).getMoves().add("FL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r-1,c+1)) {
+		getPlayerRC(r,c).getMoves().add("FR");
+		hasMoves++;
+	    }
+	}
+	else {
+	    if ( proper(r,c,r+1,c-1)) {
+		getPlayerRC(r,c).getMoves().add("FL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r+1,c+1)) {
+		getPlayerRC(r,c).getMoves().add("FR");
+		hasMoves++;
+	    }
+	}
+	return hasMoves > 0;
+    }
+
 }

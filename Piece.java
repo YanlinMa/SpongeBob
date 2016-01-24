@@ -1,9 +1,8 @@
+import java.util.ArrayList;
+
 /*TO THINK ABOUT / DO:
 
-  - how should status be used
-  - is there a easier than the boolean king to change toString?
-  - is protected correct?
-  - is pieceNum necessary or just use naming system? -- implement later
+  - naming system? -- implement later
 
  */
 
@@ -12,12 +11,20 @@ public abstract class Piece {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // instance variables
     protected boolean king;
-    protected boolean status; // this for dead / alive? wb king?
-    //protected int pieceNum;
+    protected boolean status; 
+    protected int row;
+    protected int col;
+   
 
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods
+
+    //default constructor
+    public Piece() {
+	king = false;
+	status = true;
+    }
     
     
     //returns whether a piece is a king
@@ -30,13 +37,6 @@ public abstract class Piece {
 	return status;
     }
 
-    /*
-    //returns pieceNum
-    public int getPieceNum() {
-	return pieceNum;
-    }
-    */
-
     //sets king
     public void setKing(boolean x) {
 	king = x;
@@ -46,14 +46,6 @@ public abstract class Piece {
     public void setStatus(boolean x) {
 	status = x;
     }
-
-    /*
-    //sets pieceNum
-    public void setPieceNum(int x) {
-	pieceNum =  x;
-    }
-    */
-
 
     
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

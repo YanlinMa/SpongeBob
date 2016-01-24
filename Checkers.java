@@ -4,6 +4,8 @@
    - elaborate on welcome message, instructions
    - winning / tie games
    - play again features
+   - make sure user inputs are ok (default selections or while loops)
+   - write direction function
  */
 
 
@@ -18,47 +20,69 @@ public class Checkers {
 	game.play();
 
     }
-    
-    public String directions() {
-    	return "";
-    }
+
 
     public void play() {
-	/*
-	//user input for what level to create correct board
-	System.out.println("Choose a level (X,1,2,3): ");
-	String level = Keyboard.readString();
-	*/
-	//make board depending on level (currently there is one..)
-	LevelX b = new LevelX();
 
+	//user input for what level to create correct board
+	System.out.println("Choose a level (E,M,H): ");
+	String level = Keyboard.readString();
+	
+	//make board depending on level (currently there is one..)
+	/*
+        if (level.equals("E")) {
+	    LevelE b = new LevelE();
+	}
+	else if (level.equals("M")) {
+	    LevelM b = new LevelM();
+	}
+	else {
+	    LevelH b = new LevelH();
+	}
+	*/
+	LevelE b = new LevelE();
+
+	//print board
 	System.out.println(b);
 	
-	//user input for coordinates of piece to move
-	System.out.println("Enter row of piece to move: ");
-	int r1 = Keyboard.readInt();
-	System.out.println("Enter column of piece to move: ");
-	int c1 = Keyboard.readInt();
-	//user input for coordinates to move to
-	System.out.println("Enter row of place to move to: ");
-	int r2 = Keyboard.readInt();
-	System.out.println("Enter column of place to move to: ");
-	int c2 = Keyboard.readInt();
+	//user selects piece to move
+	System.out.print("enter the id of the piece to move: ");
+        String id = Keyboard.readString();
 
+	while (!b.contains(id)) {
+	    System.out.print("Please enter another id: ");
+	    id = Keyboard.readString();   
+	}
 
-	while (!b.move(r1,c1,r2,c2))
-	    System.out.println("Please enter another set of coordinates");
+        //find row and column of player w this id
 
-	//b.AIMove();
+	//user selects which move
+	System.out.print("choose a move: " + b.getPlayer(id).getMoves());
+	String m = Keyboard.readString();
 
-	System.out.println(b);
+	while (!(b.getPlayer(id).getMoves().contains(m))) {
+	    System.out.print("please choose another move ");
+	    m = Keyboard.readString();
+	}
 
+	//if-else statements finding row and column for move
+
+	//move users piece
+	b.move(r1,c1,r2,c2);
+
+	//call for AI move
+        //convert that to rows and columns -- MAKE THESE SEPARATE FXNS?
+	//call b.move() on those rows and columns
+	       
 	System.out.println(b);
 
     }
-
+    
+    /*
     public int[] getUserMove() {
+	
     }
+    */
 
 }
 
