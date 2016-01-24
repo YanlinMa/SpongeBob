@@ -1,12 +1,5 @@
 import java.util.ArrayList;
 
-
-/* TO DO:
- - test & simplify
- - other levels - should each be a separate method or ?
-*/
-
-
 public class LevelE extends Board {
     
     //move random opponent piece randomly, no kings
