@@ -23,6 +23,7 @@ public class Checkers {
 
 
     public void play() {
+
 	/*
 	//user input for what level to create correct board
 	System.out.println("Choose a level (E,M,H): ");
@@ -42,64 +43,66 @@ public class Checkers {
 	*/
 	LevelE b = new LevelE();
 
-	//print board
-	System.out.println(b);
+	while (b.movables().size() > 0) {
+	    //print board
+	    System.out.println(b);
 	
-	//user selects piece to move
-	System.out.print("enter the id of the piece to move: ");
-        String id = Keyboard.readString();
+	    //user selects piece to move
+	    System.out.print("enter the id of the piece to move: ");
+	    String id = Keyboard.readString();
 
-	while (!b.contains(id)) {
-	    System.out.print("Please enter another id: ");
-	    id = Keyboard.readString();   
+	    while (!b.contains(id)) {
+		System.out.print("Please enter another id: ");
+		id = Keyboard.readString();   
+	    }
+
+	    //user selects which move
+	    System.out.print("choose a move " +
+			     (b.getPlayer(id)).getMoves() + ": ");
+	    String m = Keyboard.readString();
+	
+	    while (!(b.getPlayer(id).getMoves().contains(m))) {
+		System.out.print("please choose another move: ");
+		m = Keyboard.readString();
+	    }
+
+	    //find row and column of player w this id
+	    int[] rc = b.findRCbyID(id);
+	    int r1 = rc[0];
+	    int c1 = rc[1];	
+	
+	    //find row and column for move
+	    rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+	    int r2 = rc[0];
+	    int c2 = rc[1];
+
+
+	    //move users piece
+	    b.move(r1,c1,r2,c2);
+	    System.out.println(b);
+
+	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	    //call for AI move
+	    String[] ai = b.AIMove();
+	    id = ai[0];
+	    m = ai[1];
+
+	    //find row and column of player w this id
+	    rc = b.findRCbyID(id);
+	    r1 = rc[0];
+	    c1 = rc[1];	
+	
+	    //find row and column for move
+	    rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+	    r2 = rc[0];
+	    c2 = rc[1];
+
+	    //move AI piece
+	    b.move(r1,c1,r2,c2);
+	
+	    System.out.println(b);
 	}
-
-	//user selects which move
-	System.out.print("choose a move " +
-			 (b.getPlayer(id)).getMoves() + ": ");
-	String m = Keyboard.readString();
-	
-	while (!(b.getPlayer(id).getMoves().contains(m))) {
-	    System.out.print("please choose another move: ");
-	    m = Keyboard.readString();
-	}
-
-	//find row and column of player w this id
-	int[] rc = b.findRCbyID(id);
-	int r1 = rc[0];
-	int c1 = rc[1];	
-	
-	//find row and column for move
-	rc = b.getPlayer(id).findRCbyM(m,r1,c1);
-	int r2 = rc[0];
-	int c2 = rc[1];
-
-
-	//move users piece
-	b.move(r1,c1,r2,c2);
-	System.out.println(b);
-
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-	//call for AI move
-	String[] ai = b.AIMove();
-	id = ai[0];
-	m = ai[1];
-
-	//find row and column of player w this id
-	rc = b.findRCbyID(id);
-	r1 = rc[0];
-	c1 = rc[1];	
-	
-	//find row and column for move
-	rc = b.getPlayer(id).findRCbyM(m,r1,c1);
-	r2 = rc[0];
-	c2 = rc[1];
-
-        //move AI piece
-	b.move(r1,c1,r2,c2);
-	
-	System.out.println(b);
     }
 
 }

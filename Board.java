@@ -41,6 +41,22 @@ public abstract class Board {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //accessors
 
+    //return movables AL
+    public ArrayList<Player> getMovables() {
+	return movables;
+    }
+
+    //return opponents AL
+    public ArrayList<Player> getOpponents() {
+	return opponents;
+    }
+
+    //return friends AL
+    public ArrayList<Player> getFriends() {
+	return friends;
+    }
+
+    
     //return Piece at 
     public Piece getPiece(int r, int c) {
 	return grid[r][c];
