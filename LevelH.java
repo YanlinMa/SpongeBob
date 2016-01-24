@@ -18,6 +18,8 @@ public class LevelH extends Board {
   //and allow opponent piece to reach the end)
   
   //if a player move allows for a kill, only follow through if the opponent piece does not also get killed
-  //when possible, allow the opponent pieces to line up in a diagonal so the pieces cannot be killed
+  //when possible, allow the opponent pieces to line up in a diagonal against a player piece
+  //so a kill cannot be performed by the player
+  //group pieces together in two, and move them together so one is always behind the other
   
 }
