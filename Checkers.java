@@ -18,7 +18,10 @@ public class Checkers {
 	game.play();
 
     }
-
+    
+    public String directions() {
+    	return "";
+    }
 
     public void play() {
 	/*
