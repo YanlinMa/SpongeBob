@@ -10,7 +10,7 @@ import cs1.Keyboard;
 public class Checkers {
 
     public static void main(String[] args) {
-	System.out.println("\n\tWELCOME TO\n\t CHECKERS\n\n");
+	System.out.println("\n\t\t\tWELCOME TO\n\t\t\t CHECKERS\n\n");
 	
 	Checkers game = new Checkers();
 	game.play();
