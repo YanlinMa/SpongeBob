@@ -43,22 +43,25 @@ public class Checkers {
 	    //print board
 	    System.out.println(b);
 	
+            System.out.println("The pieces are named by IDs composed of a letter and a number,\n
+            with the third character displaying what kind of piece it is (P for regular piece, K for king)")
+	
 	    //user selects piece to move
-	    System.out.print("enter the id of the piece to move: ");
+	    System.out.print("Enter the ID (first two characters displayed) of the piece to move: ");
 	    String id = Keyboard.readString();
 
 	    while (!b.contains(id)) {
-		System.out.print("Please enter another id: ");
+		System.out.print("Invalid ID. Please enter another ID: ");
 		id = Keyboard.readString();   
 	    }
 
 	    //user selects which move
-	    System.out.print("choose a move " +
+	    System.out.print("Choose a move " +
 			     (b.getPlayer(id)).getMoves() + ": ");
 	    String m = Keyboard.readString();
 	
 	    while (!(b.getPlayer(id).getMoves().contains(m))) {
-		System.out.print("please choose another move: ");
+		System.out.print("Invalid move. Please choose another move: ");
 		m = Keyboard.readString();
 	    }
 
@@ -119,5 +122,3 @@ public class Checkers {
     }
 
 }
-
-
