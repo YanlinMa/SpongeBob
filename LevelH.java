@@ -22,4 +22,9 @@ public class LevelH extends Board {
   //so a kill cannot be performed by the player
   //group pieces together in two, and move them together so one is always behind the other
   
+  public static void main(String[] args) {
+    LevelH b = new LevelH();
+    System.out.println(b);
+  }
+  
 }
