@@ -1,4 +1,4 @@
-CHECKERS IN TERMINAL
+CHECKERS
 
 The game gives the user an option of playing against another person on the same Terminal session,
 or against AI methods on the computer.
@@ -9,10 +9,14 @@ If the computer is chosen as an opponent, the player can then choose what level 
 
 Gameplay:
 
-Once the original board is displayed for the player, they are then asked to select the the piece they want to move.
-********method undetermined.
+Once the original board is displayed for the player, they are asked to select the ID of the piece they want to move,
+and a list of possible directions will be displayed for them. The player will then input one of the directions provided,
+which may include FL (front left), FR (front right), and for king pieces, BL (back left), and BR (back right).
 
-The player(s) is prompted to choose a numbered piece and can enter L, R, BL, BR to move left, right, back-left, back-right respectively. These selections are filtered so the piece must exist and the move must be allowed by game rules.
+After the player makes their move, either the second player will then take their turn, or the computer will generate a move
+based on the difficulty of the game.
+
+
 
 Levels are implemented with the presence of checkers strategies (or the lack thereof) in the moves of the opponent. After the player selects a level, the algorithm will scan the board to judge the best move to counteract the player’s advance.
 
@@ -24,4 +28,3 @@ To execute:
 
 javac Checkers.java
 java Checkers
-
