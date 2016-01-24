@@ -43,8 +43,7 @@ public class Checkers {
 	    //print board
 	    System.out.println(b);
 	
-            System.out.println("The pieces are named by IDs composed of a letter and a number,\n
-            with the third character displaying what kind of piece it is (P for regular piece, K for king)");
+            System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)");
 	
 	    //user selects piece to move
 	    System.out.print("Enter the ID (first two characters displayed) of the piece to move: ");
