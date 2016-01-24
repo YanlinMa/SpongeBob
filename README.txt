@@ -1,12 +1,16 @@
 CHECKERS IN TERMINAL
 
-The game of checkers with three levels -- easy, medium, and hard -- to be run in the terminal.
+The game gives the user an option of playing against another person on the same Terminal session,
+or against AI methods on the computer.
 
-The game has the option of being played against another player (on the same Terminal session) or against the computer. The player will choose a color (black or white).
+If the computer is chosen as an opponent, the player can then choose what level to play, out of easy, medium, or hard.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Gameplay:
+
+Once the original board is displayed for the player, they are then asked to select the the piece they want to move.
+********method undetermined.
 
 The player(s) is prompted to choose a numbered piece and can enter L, R, BL, BR to move left, right, back-left, back-right respectively. These selections are filtered so the piece must exist and the move must be allowed by game rules.
 
@@ -20,3 +24,4 @@ To execute:
 
 javac Checkers.java
 java Checkers
+
