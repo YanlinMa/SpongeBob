@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 
 public class LevelE extends Board {
-
-
+    
     // move random opponent piece randomly, no kings
     //assumes there are moves left
     public String[] AIMove() {
@@ -22,15 +21,10 @@ public class LevelE extends Board {
 	//select random move from that player's moves list
         String m = x.randMove();
 	ret[1] = m;
-	    
+
 	//return that move
 	return ret;
 
-    }
- 
-    public static void main(String[] args) {
-	LevelE b = new LevelE();
-	System.out.println(b);
     }
 
 }

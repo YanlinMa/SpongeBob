@@ -14,7 +14,6 @@ import java.util.ArrayList;
    - check win, return winner methods
    - hasMoves() may be simplified using proper()
    - write movesLeftOnBoard()
-   - NEED PROPER()? AND OTHER FXNS?
 
 */
 
@@ -140,16 +139,16 @@ public abstract class Board {
 	movables.clear();
 	opponents.clear();
 	friends.clear();
-	
+
 	for (int r = 0; r < 8; r++) {
 	    for (int c = 0; c < 8; c++) {
 		if (getPiece(r,c) instanceof Player) {
-		    if (((Player)getPiece(r,c)).getFriend()) {
-			if (addMoves(r,c)) {
-			    friends.add((Player)getPiece(r,c));
-			}
-			else if (addMoves(r,c))
-			    opponents.add((Player)getPiece(r,c));
+		    if (getPlayerRC(r,c).getFriend()) {
+			if (addMoves(r,c)) 
+			    friends.add(getPlayerRC(r,c));
+		    }
+		    else if (addMoves(r,c) && getPlayerRC(r,c).getStatus()) {
+			opponents.add(getPlayerRC(r,c));
 		    }
 		}
 	    }
@@ -212,7 +211,7 @@ public abstract class Board {
     //returns true if move successful, false otherwise
     public boolean move(int r1, int c1, int r2, int c2) {
 	if (proper(r1,c1,r2,c2)) {
-	    boolean side = ((Player)getPiece(r2,c2)).getFriend();
+	    boolean side = (getPlayerRC(r1,c1).getFriend());
 	    boolean stat1 = getPiece(r1,c1).getStatus();
 	    boolean stat2 = getPiece(r2,c2).getStatus();
 	    getPiece(r1,c1).setStatus(!stat1);

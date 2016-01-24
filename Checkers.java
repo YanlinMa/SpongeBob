@@ -54,41 +54,53 @@ public class Checkers {
 	    id = Keyboard.readString();   
 	}
 
-        //find row and column of player w this id
-	int[] rc = b.findRCbyID(id);
-	int r1 = rc[0];
-	int c1 = rc[1];
-	
 	//user selects which move
 	System.out.print("choose a move " +
-			 ((Player)b.getPiece(r1,c1)).getMoves() + ": ");
+			 (b.getPlayer(id)).getMoves() + ": ");
 	String m = Keyboard.readString();
 	
-	while (!(((Player)b.getPiece(r1,c1)).getMoves().contains(m))) {
+	while (!(b.getPlayer(id).getMoves().contains(m))) {
 	    System.out.print("please choose another move: ");
 	    m = Keyboard.readString();
 	}
+
+	//find row and column of player w this id
+	int[] rc = b.findRCbyID(id);
+	int r1 = rc[0];
+	int c1 = rc[1];	
 	
 	//find row and column for move
-	
+	rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+	int r2 = rc[0];
+	int c2 = rc[1];
 
-	/*
+
 	//move users piece
 	b.move(r1,c1,r2,c2);
+	System.out.println(b);
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	//call for AI move
-        //convert that to rows and columns -- MAKE THESE SEPARATE FXNS?
-	//call b.move() on those rows and columns
-	       
+	String[] ai = b.AIMove();
+	id = ai[0];
+	m = ai[1];
+
+	//find row and column of player w this id
+	rc = b.findRCbyID(id);
+	r1 = rc[0];
+	c1 = rc[1];	
+	
+	//find row and column for move
+	rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+	r2 = rc[0];
+	c2 = rc[1];
+
+        //move AI piece
+	b.move(r1,c1,r2,c2);
+	
 	System.out.println(b);
-	*/
     }
-
-   
-    public int[] findRCbyM(String m) {
-
-    }
-    
 
 }
 

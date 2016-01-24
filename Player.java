@@ -2,9 +2,7 @@ import java.util.ArrayList;
 
 /*TO THINK ABOUT / DO:
   
-  - need default constructor?
   - actually make it look like a piece
-  - get rid of rows in Piece.java and here
 
 */
 
@@ -81,6 +79,33 @@ public class Player extends Piece {
     //return if player is an opponent
     public boolean isOpponent() {
 	return !friend;
+    }
+
+
+    //find row and column based on move
+    public int[] findRCbyM(String m, int r, int c) {
+	int[] rc = new int[2];
+	if (getFriend()) {
+	    if (m.equals("FL")) {
+		rc[0] = r-1;
+		rc[1] = c-1;
+	    }
+	    else {//if (m.equals("FR"))
+		rc[0] = r-1;
+		rc[1] = c+1;
+	    }
+	}
+	else {
+	    if (m.equals("FL")) {
+		rc[0] = r+1;
+		rc[1] = c-1;
+	    }
+	    else {//if (m.equals("FR"))
+		rc[0] = r+1;
+		rc[1] = c+1;
+	    }
+	}
+	return rc;
     }
     
     
