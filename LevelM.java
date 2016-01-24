@@ -1,21 +1,10 @@
-//Medium
-//if no opponent pieces are near, move a random piece forward
+import java.util.ArrayList;
 
 public class LevelM extends Board {
     
 	//pick a random opponent piece
-	public int[] randPiece() {
-		int[] ret = new int[2];
-		int r = (int)(Math.random()*8);
-		int c = (int)(Math.random()*8);
-		while (getPiece(r,c) instanceof Empty) {
-	    	r = (int)(Math.random()*8);
-	    	c = (int)(Math.random()*8);
-		}
-		ret[0] = r;
-		ret[1] = c;
-		return ret;
-	}
+	Player x = opponents.get((int)(Math.random()*opponents.size()));
+	ret[0] = x.getID();
     
     	//possibility to kill off a player piece
 	public void killPlayer() {
@@ -48,11 +37,17 @@ public class LevelM extends Board {
 	}
 	
 	//if no interaction with player pieces, move a random piece forward
-	//call LevelE.java?
+	public void random() {
+		String m = x.randMove();
+		ret[1] = m;
+	}
 	
-	public static void main(String[] args) {
-		LevelM b = new LevelM();
-		System.out.println(b);
+	public String[] AIMove() {
+		String[] ret = new String[2];
+		killPlayer();
+		avoidKill();
+		random();
+		return ret;
 	}
 	
 }
