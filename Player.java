@@ -20,21 +20,20 @@ public class Player extends Piece {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //overloaded constructors
 
-    public Player(String i, int r, int c) {
+    public Player(String i, int c) {
 	super();
 	friend = true;
-	row = r;
 	col = c;
 	ID = i + col;
     }
 
-    public Player(String i, int r, int c, boolean f) {
-	this(i,r,c);
+    public Player(String i, int c, boolean f) {
+	this(i,c);
 	friend = f;
     }
     
-    public Player(String i, int r, int c, boolean s, boolean f) {
-        this(i,r,c,f);
+    public Player(String i, int c, boolean s, boolean f) {
+        this(i,c,f);
 	status = s;
     }
 

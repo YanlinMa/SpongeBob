@@ -106,28 +106,28 @@ public abstract class Board {
 	
 	for (int c = 0; c < 8; c+=2) {
 
-	    grid[0][c] = new Player("A",0,c,false);
+	    grid[0][c] = new Player("A",c,false);
 	    grid[0][c+1] = new Empty();
 
 	    grid[1][c] = new Empty();
-	    grid[1][c+1] = new Player("B",1,c+1,false);
+	    grid[1][c+1] = new Player("B",c+1,false);
 	    
-	    grid[2][c] = new Player("C",2,c,false);
+	    grid[2][c] = new Player("C",c,false);
 	    grid[2][c+1] = new Empty();
 
 	    grid[5][c] = new Empty();
-	    grid[5][c+1] = new Player("D",5,c+1);
+	    grid[5][c+1] = new Player("D",c+1);
 
-	    grid[6][c] = new Player("E",6,c);
+	    grid[6][c] = new Player("E",c);
 	    grid[6][c+1] = new Empty();
 
 	    grid[7][c] = new Empty();
-	    grid[7][c+1] = new Player("F",7,c+1);
+	    grid[7][c+1] = new Player("F",c+1);
 	    
 	    grid[3][c] = new Empty(); 
-	    grid[3][c+1] = new Player("G",3,c+1,false, false);
+	    grid[3][c+1] = new Player("G",c+1,false, false);
 	    
-	    grid[4][c] = new Player("H",4,c,false, false);
+	    grid[4][c] = new Player("H",c,false, false);
 	    grid[4][c+1] = new Empty();
 	}
 
