@@ -1,21 +1,39 @@
+//Medium
+//if there is a possible move to kill off an opponent's piece, implement this
+//if piece at danger, move away 
+//if both of the above are true, randomly select one to do
+//if no opponent pieces are near, move a random piece forward
+
 public class LevelM extends Board {
-
-    // return random opponent player piece in Board
-    // that 
-    public int[] randPiece() {
-    	int[] ret = new int[2];
-	    int r = (int)(Math.random()*8);
-    	int c = (int)(Math.random()*8);
-	
-    	while (getPiece(r,c) instanceof Empty) {
-	      r = (int)(Math.random()*8);
-	      c = (int)(Math.random()*8);
-	    }
-
-	    ret[0] = r;
-	    ret[1] = c;
-	    return ret;
-    }
+    
+	//pick a random opponent piece
+	public int[] randPiece() {
+		int[] ret = new int[2];
+		int r = (int)(Math.random()*8);
+		int c = (int)(Math.random()*8);
+		while (getPiece(r,c) instanceof Empty) {
+	    	r = (int)(Math.random()*8);
+	    	c = (int)(Math.random()*8);
+		}
+		ret[0] = r;
+		ret[1] = c;
+		return ret;
+	}
+    
+    	//possibility to kill off a player piece
+	public void killPlayer() {
+		int[] randP = randPiece();
+		int r = randP[0];
+		int c = randP[1];
+		if (getPiece(r+1,c+1) instanceof Player) {
+			move(r,c,r+2,c+2);
+			//kill off player piece at (r+1,c+1)
+		}
+		else if (getPiece(r+1,c-1) instanceof Player) {
+			move(r,c,r+2,c-2);
+			//kill off player piece at (r+1,c-1)
+		}
+	}
 
     // move random piece randomly, no jumps / kings
     public void AIMove() {
