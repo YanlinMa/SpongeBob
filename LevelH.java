@@ -48,7 +48,7 @@ public class LevelH extends Board {
 		ret[1] = "JFL";
 	}
 	
-	//if not, move away from player's jump
+	//if not, move away from player's jump if possible
 	else if (danger) {
 	    ret[0] = id;
 	    if (dangerDir && inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]+1)) {
