@@ -9,7 +9,7 @@ The game is played against the computer with two possible levels of difficulty, 
 
 The pieces are named by their IDs, which are the first two characters in their label (one is a letter, one is a number), and the third character is either P, which stands for a regular piece, or K, which stands for a King. The pieces that have "AI" as the first two characters of their label are the opponent pieces, which cannot be controlled by the player.
 
-The moves are chosen from a list of possible directions, which may include FL (front left), FR (front right), JFL (jump front left), JFR (jump front right), and for king pieces, BL (back left), BR (back right), JBL (jump back left), and JBR (jump back right).
+The moves for each piece are chosen from a list of possible directions, which may include FL (front left), FR (front right), JFL (jump front left), JFR (jump front right), and for king pieces, BL (back left), BR (back right), JBL (jump back left), and JBR (jump back right).
 
 The computer generates moves based on the difficulty of the game. Level Easy is implemented with methods that randomly select a piece to move, and then randomly selects a direction to move in, while Level Hard prioritizes killing the user's pieces and moves their own pieces away from danger.
 
