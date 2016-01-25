@@ -105,7 +105,7 @@ public class LevelH extends Board {
 	    ret[0] = x.getID();
 	    ret[1] = x.randMove();
 	}
-	System.out.println(ret[1]);
+	
 	return ret;
 
     }
