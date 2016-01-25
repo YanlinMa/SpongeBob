@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class LevelM extends Board {
+public class LevelH extends Board {
  
     //if there is a jump available, the AI takes it
     //assumes moves left
