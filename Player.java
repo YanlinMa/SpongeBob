@@ -1,17 +1,16 @@
 import java.util.ArrayList;
 
+//accounts for attributes of the player's pieces
+
 public class Player extends Piece {
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
     private boolean friend; //where true is player, false is AI
     private String ID;
     private ArrayList<String> moves = new ArrayList<String>(); //possible moves
-
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     //overloaded constructors
-
+    
     public Player(String i, int c) {
 	super();
 	friend = true;
@@ -29,29 +28,23 @@ public class Player extends Piece {
 	status = s;
     }
 
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //accessors
+    //accessor methods
     
     //accessor for friend
     public boolean getFriend() {
 	return friend;
     }
 
-
     //accessor for ID
     public String getID() {
 	return ID;
     }
 
-
-    //accessor for moves AL
+    //accessor for moves
     public ArrayList<String> getMoves() {
 	return moves;
     }
     
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //mutators
 
     //set friend
@@ -59,22 +52,17 @@ public class Player extends Piece {
 	friend = b;
     }
 
-
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods
     
-    //get random item from moves
+    //select random move
     public String randMove() {
 	return moves.get((int)(Math.random()*moves.size()));
     }
 
-
-    //return if player is an opponent
+    //true if player is an opponent
     public boolean isOpponent() {
 	return !friend;
     }
-
 
     //find row and column based on move
     public int[] findRCbyM(String m, int r, int c) {
@@ -149,7 +137,6 @@ public class Player extends Piece {
 	}
 	return rc;
     }
-    
     
     //overwrite toString()
     public String toString() {
