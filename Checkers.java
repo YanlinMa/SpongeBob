@@ -27,7 +27,7 @@ public class Checkers {
 		game.playH();
 	}
 	
-	System.out.flush();
+	System.out.print(\f);
 
     }
 
@@ -132,7 +132,7 @@ public class Checkers {
 	String x = Keyboard.readString();
 
 	while (!(x.equals("Y") || x.equals("N"))) {
-	    System.out.println("Please enter Y or N: ");
+	    System.out.print("Please enter Y or N: ");
 	    x = Keyboard.readString();
 	}
 
@@ -245,7 +245,7 @@ public class Checkers {
 	String x = Keyboard.readString();
 
 	while (!(x.equals("Y") || x.equals("N"))) {
-	    System.out.println("Please enter Y or N: ");
+	    System.out.print("Please enter Y or N: ");
 	    x = Keyboard.readString();
 	}
 
