@@ -3,12 +3,15 @@ import java.util.ArrayList;
 //accounts for attributes of the player's pieces
 
 public class Player extends Piece {
-
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
     private boolean friend; //where true is player, false is AI
     private String ID;
     private ArrayList<String> moves = new ArrayList<String>(); //possible moves
     
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //overloaded constructors
     
     public Player(String i, int c) {
@@ -28,6 +31,7 @@ public class Player extends Piece {
 	status = s;
     }
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //accessor methods
     
     //accessor for friend
@@ -52,6 +56,7 @@ public class Player extends Piece {
 	friend = b;
     }
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods
     
     //select random move
