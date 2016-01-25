@@ -27,8 +27,6 @@ public class Checkers {
 		game.playH();
 	}
 	
-	System.out.print("\f");
-
     }
 
 
@@ -255,6 +253,8 @@ public class Checkers {
 	if (x.equals("Y"))
 	    return true;
 	return false;
+	
+	System.out.print("\f");
 	
     }
 
