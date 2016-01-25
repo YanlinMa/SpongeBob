@@ -1,3 +1,5 @@
+//INFO: contains checkerboard and information on it
+
 import java.util.ArrayList;
 
 
