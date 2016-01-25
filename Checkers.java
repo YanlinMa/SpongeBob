@@ -84,7 +84,7 @@ public class Checkers {
 		rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
 		r2 = rc[0];
 		c2 = rc[1];
-		System.out.println("\n" + b);
+		System.out.println(b);
 	    }
 
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
