@@ -119,7 +119,7 @@ DEVLOG
 - writing and debugging new functions
   DONE BY: hyketwig
   
-- improved display
+- improved game format
 - Checkers.java
 - added functionality to clear the screen after each game
   DONE BY: Andrea
