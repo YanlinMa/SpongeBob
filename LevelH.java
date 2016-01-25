@@ -36,13 +36,11 @@ public class LevelH extends Board {
 
 
 	if (canKill) {
-	    if (Math.random() < .75) {
-		ret[0] = id;
-		if (getPlayer(id).getMoves().contains("JR"))
-		    ret[1] = "JR";
-		else
-		    ret[1] = "JL";
-	    }
+	    ret[0] = id;
+	    if (getPlayer(id).getMoves().contains("JR"))
+		ret[1] = "JR";
+	    else
+		ret[1] = "JL";
 	}
 	else if (danger) {
 	    ret[0] = id;
