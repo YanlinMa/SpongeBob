@@ -249,13 +249,13 @@ public class Checkers {
 	    System.out.print("Please enter Y or N: ");
 	    x = Keyboard.readString();
 	}
-
-	if (x.equals("Y"))
-	    return true;
-	return false;
 	
 	System.out.print("\f");
 	
+	if (x.equals("Y"))
+	    return true;
+	return false;
+
     }
 
 }
