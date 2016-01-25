@@ -110,6 +110,9 @@ DEVLOG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1/24
+- debugged the code
+  DONE BY: SpongeBob
+
 -
   DONE BY: hyketwig
   
