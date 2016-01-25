@@ -2,7 +2,7 @@
    - elaborate on welcome message, instructions
    - winning / tie games
    - play again features
- */
+*/
 
 
 import cs1.Keyboard;
@@ -28,13 +28,13 @@ public class Checkers {
 	//make board depending on level (currently there is one..)
 
         if (level.equals("E")) {
-	    LevelE b = new LevelE();
+	LevelE b = new LevelE();
 	}
 	else if (level.equals("M")) {
-	    LevelM b = new LevelM();
+	LevelM b = new LevelM();
 	}
 	else {
-	    LevelH b = new LevelH();
+	LevelH b = new LevelH();
 	}
 	*/
 	LevelE b = new LevelE();
@@ -75,17 +75,10 @@ public class Checkers {
 	    int c2 = rc[1];
 
 
-	    //move users piece, allow for extra jumps if possible
-	    while (b.move(r1,c1,r2,c2)) {
-		r1 = r2;
-		c1 = c2; //with current coordinates
-		System.out.println("extra jump? please choose another move: ");
-		m = Keyboard.readString();
-		rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
-		r2 = rc[0];
-		c2 = rc[1];
-		System.out.println(b);
-	    }
+	    //move users piece -- STILL NEED EXTRA JUMP FXN
+	    b.move(r1,c1,r2,c2);
+	    System.out.println(b);
+
 
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -104,25 +97,9 @@ public class Checkers {
 	    r2 = rc[0];
 	    c2 = rc[1];
 
-	    if (b.movables.size() > 0) {
-		System.out.println("opponents: " + b.opponents.size());
-		//move AI's piece, allow for extra jumps if possible
-		while (b.move(r1,c1,r2,c2)) {
-		    r1 = r2;
-		    c1 = c2; //with current coordinates
-		    m = b.getPlayer(id).randMove();
-		    rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
-		    r2 = rc[0];
-		    c2 = rc[1];
-		    System.out.println(b);
-		}
-	    }
-	    else {
-		break;
-	    }
+	    b.move(r1,c1,r2,c2);
 
 	}
-	System.out.println("game over");
     }
 
 }
