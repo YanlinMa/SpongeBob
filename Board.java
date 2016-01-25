@@ -168,7 +168,7 @@ public abstract class Board {
 	    for (int c = 0; c < 8; c++) {
 	        retStr += grid[r][c] + "\t";
 	    }
-	    retStr += "\n";
+	    retStr += "\n\n";
 	}
 	return retStr;
     }
