@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-//accounts for all the pieces on the checkerboard
+//accounts for attributes of the pieces on the checkerboard
 
 public abstract class Piece {
 
