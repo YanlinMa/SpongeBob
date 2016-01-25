@@ -80,8 +80,28 @@ public class Checkers {
 	    int r2 = rc[0];
 	    int c2 = rc[1];
 
-	    //move users piece -- STILL NEED EXTRA JUMP FXN
-	    b.move(r1,c1,r2,c2);
+	    //move users piece
+	    //if can do multiple jumps, ask for input on that jump
+	    while (b.move(r1,c1,r2,c2)) {
+		r1 = r2;
+		c1 = c2; //these are current positions now
+		if (b.getPlayerRC(r1,c1).getMoves().contains("JR") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JL") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
+		    System.out.println("Jump again: " +
+				       b.getPlayer(id).getMoves() + ": ");
+		    while (!(b.getPlayer(id).getMoves().contains(m))) {
+			System.out.print("Invalid move. Please choose another move: ");
+			m = Keyboard.readString();
+	
+			//find row and column for move
+			rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+			r2 = rc[0];
+			c2 = rc[1];
+		    }
+		}				    
+	    }
 	    System.out.println();
 	    System.out.print(b);
 
@@ -193,8 +213,28 @@ public class Checkers {
 	    int r2 = rc[0];
 	    int c2 = rc[1];
 
-	    //move users piece -- STILL NEED EXTRA JUMP FXN
-	    b.move(r1,c1,r2,c2);
+	    //move users piece
+	    //if can do multiple jumps, ask for input on that jump
+	    while (b.move(r1,c1,r2,c2)) {
+		r1 = r2;
+		c1 = c2; //these are current positions now
+		if (b.getPlayerRC(r1,c1).getMoves().contains("JR") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JL") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
+		    System.out.println("Jump again: " +
+				       b.getPlayer(id).getMoves() + ": ");
+		    while (!(b.getPlayer(id).getMoves().contains(m))) {
+			System.out.print("Invalid move. Please choose another move: ");
+			m = Keyboard.readString();
+	
+			//find row and column for move
+			rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+			r2 = rc[0];
+			c2 = rc[1];
+		    }
+		}				    
+	    }
 	    System.out.println();
 	    System.out.print(b);
 
