@@ -226,12 +226,12 @@ public abstract class Board {
 		    }
 
 		    //checks for jumps
-		    if (!prop && (inBounds(r1-1) && inBounds(c1+1)) //JR
+		    if (!prop && (inBounds(r1-1) && inBounds(c1+1)) //JFR
 			&& getPiece(r1 - 1,c1 + 1) instanceof Player) {
 			prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
 				(getPlayerRC(r1-1,c1+1).isOpponent()));
 		    }
-		    if (!prop && (inBounds(r1-1) && inBounds(c1-1)) //JL
+		    if (!prop && (inBounds(r1-1) && inBounds(c1-1)) //JFL
 			&& getPiece(r1 - 1,c1 - 1) instanceof Player) {
 			prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
 				getPlayerRC(r1-1,c1-1).isOpponent());
@@ -263,13 +263,13 @@ public abstract class Board {
 		    }
 		    
 		    //check for jumps
-		    if (!prop && inBounds(r1+1) && inBounds(c1-1) //JR
+		    if (!prop && inBounds(r1+1) && inBounds(c1-1) //JFR
 			&& getPiece(r1 + 1,c1 - 1) instanceof Player) {
 			
 			prop = ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
 				(getPlayerRC(r1+1,c1-1).getFriend()));
 		    }
-		    if (!prop && inBounds(r1+1) && inBounds(c1+1) //JL
+		    if (!prop && inBounds(r1+1) && inBounds(c1+1) //JFL
 			&& getPiece(r1 + 1,c1 + 1) instanceof Player) {
 
 			prop = ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
