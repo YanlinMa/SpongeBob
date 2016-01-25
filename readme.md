@@ -32,3 +32,7 @@ into Termiinal after cloning or downloading this repo. Make sure you're in the r
 ##Levels
 * **Easy(E)** : You are playing against a random select-random move system.
 * **Hard(H)** : You are playing against a jump / move away depending on what's possible system.
+
+
+
+*Team SpongeBob-- Andrea Ma, Jannie Li*
