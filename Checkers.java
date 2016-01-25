@@ -49,7 +49,7 @@ public class Checkers {
 	while (b.opponents.size() > 0 && b.friends.size() > 0) {
 	    
 	    //print board
-	    System.out.println(b);
+	    System.out.print(b);
 	
 	    //user selects piece to move
 	    System.out.print("Enter the ID (first two characters displayed) of the piece to move: ");
@@ -82,7 +82,7 @@ public class Checkers {
 
 	    //move users piece -- STILL NEED EXTRA JUMP FXN
 	    b.move(r1,c1,r2,c2);
-	    System.out.println(b);
+	    System.out.print(b);
 
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
