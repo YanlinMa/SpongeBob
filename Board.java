@@ -180,8 +180,10 @@ public abstract class Board {
     //if usable piece
     public boolean contains(String s) {
 	for (Player x : friends) {
-	    if (x.getID().equals(s))
+	    if (x.getID().equals(s)) {
+		System.out.println(x.getMoves());
 		return true;
+	    }
 	}
 	return false;
     }
