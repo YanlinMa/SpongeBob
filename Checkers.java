@@ -22,7 +22,7 @@ public class Checkers {
 	}
 	
 	if (b.player.size()==0) {
-		System.out.println("Sorry, you have lost the game.")
+		System.out.println("Sorry, you have lost the game.");
 	}
 
     }
