@@ -1,18 +1,13 @@
 import java.util.ArrayList;
 
+//accounts for all the pieces on the checkerboard
+
 public abstract class Piece {
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // instance variables
     protected boolean king;
     protected boolean status; 
     protected int row;
     protected int col;
-   
-
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //methods
 
     //default constructor
     public Piece() {
@@ -20,13 +15,12 @@ public abstract class Piece {
 	status = true;
     }
     
-    
     //returns whether a piece is a king
     public boolean isKing() {
 	return king;
     }
     
-    //returns whether a piece is existing or not
+    //returns whether a piece exists or not
     public boolean getStatus() {
 	return status;
     }
@@ -41,10 +35,8 @@ public abstract class Piece {
 	status = x;
     }
 
-    
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // ABSTRACT METHODS
-    
+    //abstract method
     //opponents/players will show up differently on the board
     public abstract String toString();
+    
 }
