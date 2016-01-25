@@ -27,7 +27,7 @@ public class Checkers {
 		game.playH();
 	}
 	
-	System.out.print(\f);
+	System.out.print("\f");
 
     }
 
