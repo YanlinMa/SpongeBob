@@ -35,7 +35,7 @@ public class LevelH extends Board {
 	}
 
 
-	if (danger && canKill) {
+	if (canKill) {
 	    if (Math.random() < .75) {
 		ret[0] = id;
 		if (getPlayer(id).getMoves().contains("JR"))
@@ -43,31 +43,7 @@ public class LevelH extends Board {
 		else
 		    ret[1] = "JL";
 	    }
-	    else {
-		ret[0] = id;
-		if (dangerDir && inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]+1)) {
-		    if (grid[dangerLoc[0]+1][dangerLoc[1]+1] instanceof Player) {
-			if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FR")) {
-			    ret[1] = "FR";
-			}
-			else if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FL")) {
-			    ret[1] = "FL";
-			}
-		    }
-		}
-		else if (inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]-1)){
-		    if (grid[dangerLoc[0]+1][dangerLoc[1]-1] instanceof Player) {
-			if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FR")) {
-			    ret[1] = "FR";
-			}
-			else if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FL")) {
-			    ret[1] = "FL";
-			}
-		    }
-		}
-	    }
 	}
-
 	else if (danger) {
 	    ret[0] = id;
 	    if (dangerDir && inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]+1)) {
@@ -91,15 +67,6 @@ public class LevelH extends Board {
 		}
 	    }
 	}
-
-	else if (canKill) {
-	    ret[0] = id;
-	    if (getPlayer(id).getMoves().contains("JR"))
-		ret[1] = "JR";
-	    else
-		ret[1] = "JL";
-	}
-
         if (ret[1] == null || ret[0] == null) { //move random piece randomly
 	    Player x = opponents.get((int)(Math.random()*opponents.size()));
 	    ret[0] = x.getID();
