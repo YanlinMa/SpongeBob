@@ -204,13 +204,28 @@ public abstract class Board {
 		    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move forward
 
 
-		    //check for jumps and king moves
-
+		    //checks for king simple move back
 		    if (!prop && (getPiece(r1,c1) instanceof Player)) {
 			if (getPlayerRC(r1,c1).isKing())
 			    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
 		    }
 
+		    //checks for king jump back
+		    if (!prop && (inBounds(r1+1) && inBounds(c1+1)) //JBR
+			&& (getPiece(r1,c1) instanceof Player)) {
+			if (getPlayerRC(r1,c1).isKing())
+			    prop = ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1+1,c1+1).getStatus()) &&
+				    (getPlayerRC(r1+1,c1+1).isOpponent()));
+		    }
+
+		    if (!prop && (inBounds(r1+1) && inBounds(c1-1)) //JBL
+			&& (getPiece(r1,c1) instanceof Player)) {
+			if (getPlayerRC(r1,c1).isKing())
+			    prop = ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1+1,c1-1).getStatus()) &&
+				    (getPlayerRC(r1+1,c1-1).isOpponent()));
+		    }
+
+		    //checks for jumps
 		    if (!prop && (inBounds(r1-1) && inBounds(c1+1)) //JR
 			&& getPiece(r1 - 1,c1 + 1) instanceof Player) {
 			prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
@@ -226,11 +241,27 @@ public abstract class Board {
 		else {
 		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
 
+		    //check for king simple move back
 		    if ((!prop && getPiece(r1,c1) instanceof Player)) {
 			if (getPlayerRC(r1,c1).isKing())
 			    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);
 		    }
 
+		    //checks for king jump back
+		    if (!prop && (inBounds(r1-1) && inBounds(c1+1)) //JBR
+			&& (getPiece(r1,c1) instanceof Player)) {
+			if (getPlayerRC(r1,c1).isKing())
+			    prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1-1,c1+1).getStatus()) &&
+				    (getPlayerRC(r1-1,c1+1).getFriend()));
+		    }
+
+		    if (!prop && (inBounds(r1-1) && inBounds(c1-1)) //JBL
+			&& (getPiece(r1,c1) instanceof Player)) {
+			if (getPlayerRC(r1,c1).isKing())
+			    prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1-1,c1-1).getStatus()) &&
+				    (getPlayerRC(r1-1,c1-1).getFriend()));
+		    }
+		    
 		    //check for jumps
 		    if (!prop && inBounds(r1+1) && inBounds(c1-1) //JR
 			&& getPiece(r1 + 1,c1 - 1) instanceof Player) {
@@ -252,8 +283,11 @@ public abstract class Board {
     }
 
 
+    //performs jump if given jump coordinates by removing player jumped over
+    //returns true if jump is performed, false otherwise
     public boolean jump(int r1, int c1, int r2, int c2) {
 
+	//player pieces
 	if (getPlayerRC(r1,c1).getFriend()) {
 	    if (inBounds(r1-1) && inBounds(c1+1)) {
 		if (getPiece(r1 - 1,c1 + 1) instanceof Player) {
@@ -275,8 +309,33 @@ public abstract class Board {
 		    }
 		}
 	    }
+
+	    //king jumps
+	    if (inBounds(r1+1) && inBounds(c1+1)) {
+		if (getPiece(r1 + 1,c1 + 1) instanceof Player) {
+		    if ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
+			(getPlayerRC(r1+1,c1+1).isOpponent())) {
+			getPlayerRC(r1+1,c1+1).setStatus(false);
+			return true;
+		    }
+		}
+	    }
+
+	    if (inBounds(r1+1) && inBounds(c1-1)) {
+		
+		if (getPiece(r1 + 1,c1 - 1) instanceof Player) {
+		    if ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
+			getPlayerRC(r1+1,c1-1).isOpponent()) {
+			getPlayerRC(r1+1,c1-1).setStatus(false);
+			return true;
+		    }
+		}
+	    }
+	    
+
 	}
 
+	//opponent pieces
 	else {
 	    if (inBounds(r1+1) && inBounds(c1+1)) {
 		
@@ -293,6 +352,27 @@ public abstract class Board {
 		    if ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
 			getPlayerRC(r1+1,c1-1).getFriend()) {
 			getPlayerRC(r1+1,c1-1).setStatus(false);
+			return true;
+		    }
+		}
+	    }
+
+	    //king pieces
+	    if (inBounds(r1-1) && inBounds(c1+1)) {
+		
+		if (getPiece(r1 - 1,c1 + 1) instanceof Player) { 	
+		    if ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
+			(getPlayerRC(r1-1,c1+1).getFriend())) {
+			getPlayerRC(r1-1,c1+1).setStatus(false);
+			return true;
+		    }
+		}
+	    }
+	    if (inBounds(r1-1) && inBounds(c1-1)) {
+		if (getPiece(r1 - 1,c1 - 1) instanceof Player) {
+		    if ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
+			getPlayerRC(r1-1,c1-1).getFriend()) {
+			getPlayerRC(r1-1,c1-1).setStatus(false);
 			return true;
 		    }
 		}
@@ -350,27 +430,35 @@ public abstract class Board {
 	
 	if (getPlayerRC(r,c).getFriend()) {
 	    if ( proper(r,c,r-1,c-1)) {
-		getPlayerRC(r,c).getMoves().add("FL");
+		getPlayerRC(r,c).getMoves().add("FL"); //forward left
 		hasMoves++;
 	    }
 	    if (proper(r,c,r-1,c+1)) {
-		getPlayerRC(r,c).getMoves().add("FR");
+		getPlayerRC(r,c).getMoves().add("FR"); //forward right
 		hasMoves++;
 	    }
 	    if (proper(r,c,r-2,c-2)) {
-		getPlayerRC(r,c).getMoves().add("JL");
+		getPlayerRC(r,c).getMoves().add("JL"); //jump left
 		hasMoves++;
 	    }
 	    if (proper(r,c,r-2,c+2)) {
-		getPlayerRC(r,c).getMoves().add("JR");
+		getPlayerRC(r,c).getMoves().add("JR"); //jump right
 		hasMoves++;
 	    }
 	    if (proper(r,c,r+1,c-1)) {
-		getPlayerRC(r,c).getMoves().add("BL");
+		getPlayerRC(r,c).getMoves().add("BL"); //back left
 		hasMoves++;
 	    }
 	    if (proper(r,c,r+1,c+1)) {
-		getPlayerRC(r,c).getMoves().add("BR");
+		getPlayerRC(r,c).getMoves().add("BR"); //back right
+		hasMoves++;
+	    }
+	    if (proper(r,c,r+2,c-2)) {
+		getPlayerRC(r,c).getMoves().add("JBL"); //jump back left
+		hasMoves++;
+	    }
+	    if (proper(r,c,r+2,c+2)) {
+		getPlayerRC(r,c).getMoves().add("JBR"); //jump back right
 		hasMoves++;
 	    }
 	}
@@ -397,6 +485,14 @@ public abstract class Board {
 	    }
 	    if (proper(r,c,r-1,c+1)) {
 		getPlayerRC(r,c).getMoves().add("BR");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r-2,c-2)) {
+		getPlayerRC(r,c).getMoves().add("JBL");
+		hasMoves++;
+	    }
+	    if (proper(r,c,r-2,c+2)) {
+		getPlayerRC(r,c).getMoves().add("JBR");
 		hasMoves++;
 	    }
 	}
