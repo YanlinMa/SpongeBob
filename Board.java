@@ -181,7 +181,6 @@ public abstract class Board {
     public boolean contains(String s) {
 	for (Player x : friends) {
 	    if (x.getID().equals(s)) {
-		System.out.println(x.getMoves());
 		return true;
 	    }
 	}
@@ -326,6 +325,9 @@ public abstract class Board {
 	    if (side) { //set as king if appropriate
 		if (r2 == 0)
 		    ((Player)getPiece(r2,c2)).setKing(true);
+	    }
+	    else if (getPlayerRC(r1,c1).isKing()) {
+		((Player)getPiece(r2,c2)).setKing(true);
 	    }
 	    else {
 		if (r2 == 7)
