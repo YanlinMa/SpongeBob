@@ -1,17 +1,21 @@
-//INFO: driver for other fxns, contains play functionality
-
 import cs1.Keyboard;
+
+//driver file, contains main method and play functionality
 
 public class Checkers {
 
     private boolean win = false;
 
+    //main method
     public static void main(String[] args) {
+    	
+    	//welcome message
 	System.out.println("\n\t\t\tWELCOME TO\n\t\t\t CHECKERS\n");
 	
+	//new game
 	Checkers game = new Checkers();
 
-	//play easy or hard depending on user input
+	//user input for level of difficulty
 	System.out.print("Choose a level (E,H): ");
 	String level = Keyboard.readString();
 
@@ -31,15 +35,13 @@ public class Checkers {
 	
     }
 
-
     //============================================
-    //play levelE
+    //play easy
     public boolean playE() {
-
 
 	LevelE b = new LevelE();
         
-
+        //directions
 	System.out.println("\nDIRECTIONS\n");
 	System.out.println("The ID of each piece is named by the first two characters, composed of a letter and a number,");
 	System.out.println("with the third character displaying what kind of piece it is (P for regular piece, K for king)");
@@ -72,7 +74,7 @@ public class Checkers {
 		m = Keyboard.readString();
 	    }
 
-	    //find row and column of player w this id
+	    //find row and column of player with this id
 	    int[] rc = b.findRCbyID(id);
 	    int r1 = rc[0];
 	    int c1 = rc[1];	
@@ -148,9 +150,7 @@ public class Checkers {
 	if (b.friends.size() == 0) 
 	    System.out.println("Sorry, you have lost the game.\n");
 	
-
-	
-	//play again?
+	//play again or exit
 	System.out.print("Would you like to play again? (Y/N): ");
 	String x = Keyboard.readString();
 
@@ -158,6 +158,9 @@ public class Checkers {
 	    System.out.print("Please enter Y or N: ");
 	    x = Keyboard.readString();
 	}
+	
+	//clear Terminal after each game
+	System.out.print("\f");
 
 	if (x.equals("Y"))
 	    return true;
@@ -165,17 +168,13 @@ public class Checkers {
 	
     }
 
-
-
-
     //=============================================
-    //play levelH
+    //play hard
     public boolean playH() {
 
-
 	LevelH b = new LevelH();
-        
 
+	//directions
 	System.out.println("\nDIRECTIONS\n");
 	System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
 	System.out.println("BEGIN");
@@ -281,9 +280,7 @@ public class Checkers {
 	if (b.friends.size() == 0) 
 	    System.out.println("Sorry, you have lost the game.\n");
 	
-
-	
-	//play again?
+	//play again or exit
 	System.out.print("Would you like to play again? (Y/N): ");
 	String x = Keyboard.readString();
 
@@ -292,6 +289,7 @@ public class Checkers {
 	    x = Keyboard.readString();
 	}
 	
+	//clear Terminal after each game
 	System.out.print("\f");
 	
 	if (x.equals("Y"))
