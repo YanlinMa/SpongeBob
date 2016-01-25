@@ -105,7 +105,7 @@ public class Checkers {
 	    c2 = rc[1];
 
 	    if (b.movables.size() > 0) {
-		System.out.println("movables: " + b.movables.size());
+		System.out.println("opponents: " + b.opponents.size());
 		//move AI's piece, allow for extra jumps if possible
 		while (b.move(r1,c1,r2,c2)) {
 		    r1 = r2;
