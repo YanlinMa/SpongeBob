@@ -34,17 +34,17 @@ public class Player extends Piece {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //accessor methods
     
-    //accessor for friend
+    //return friend
     public boolean getFriend() {
 	return friend;
     }
 
-    //accessor for ID
+    //return ID
     public String getID() {
 	return ID;
     }
 
-    //accessor for moves
+    //return moves
     public ArrayList<String> getMoves() {
 	return moves;
     }
