@@ -89,13 +89,13 @@ public class Checkers {
 	    while (b.move(r1,c1,r2,c2)) {
 		r1 = r2;
 		c1 = c2; //these are current positions now
-		if (b.getPlayerRC(r1,c1).getMoves().contains("JR") ||
-		    b.getPlayerRC(r1,c1).getMoves().contains("JL") ||
+		if (b.getPlayerRC(r1,c1).getMoves().contains("JFR") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JFL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
-		    while (!(b.getPlayerRC(r1,c2).getMoves().contains(m))) {
+		    while ((!(b.getPlayerRC(r1,c2).getMoves().contains(m)) || !m.substring(0).equals("J"))) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
 		    }
@@ -223,13 +223,13 @@ public class Checkers {
 	    while (b.move(r1,c1,r2,c2)) {
 		r1 = r2;
 		c1 = c2; //these are current positions now
-		if (b.getPlayerRC(r1,c1).getMoves().contains("JR") ||
-		    b.getPlayerRC(r1,c1).getMoves().contains("JL") ||
+		if (b.getPlayerRC(r1,c1).getMoves().contains("JFR") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JFL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
-		    while (!(b.getPlayerRC(r1,c2).getMoves().contains(m))) {
+		    while (!(b.getPlayerRC(r1,c2).getMoves().contains(m)) || !m.substring(0).equals("J")) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
 		    }
