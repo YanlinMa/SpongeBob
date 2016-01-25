@@ -228,7 +228,7 @@ public class Checkers {
 		    b.getPlayerRC(r1,c1).getMoves().contains("JFL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
-		    System.out.println("Jump again: " +
+		    System.out.print("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
 		    m = Keyboard.readString();
 		    while (!m.substring(0,1).equals("J")) {
