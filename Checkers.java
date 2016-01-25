@@ -89,21 +89,22 @@ public class Checkers {
 	    while (b.move(r1,c1,r2,c2)) {
 		r1 = r2;
 		c1 = c2; //these are current positions now
-		if (b.getPlayerRC(r1,c1).getMoves().contains("JFR") ||
-		    b.getPlayerRC(r1,c1).getMoves().contains("JFL") ||
+		if (b.getPlayerRC(r1,c1).getMoves().contains("JR") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
-		    while (!(b.getPlayerRC(r1,c1).getMoves().contains(m))) {
+		    while (!(b.getPlayerRC(r1,c2).getMoves().contains(m))) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
-	
-			//find row and column for move
-			rc = b.getPlayer(id).findRCbyM(m,r1,c1);
-			r2 = rc[0];
-			c2 = rc[1];
 		    }
+	
+		    //find row and column for move
+		    rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+		    r2 = rc[0];
+		    c2 = rc[1];
+
 		}				    
 	    }
 	    System.out.println();
@@ -222,21 +223,22 @@ public class Checkers {
 	    while (b.move(r1,c1,r2,c2)) {
 		r1 = r2;
 		c1 = c2; //these are current positions now
-		if (b.getPlayerRC(r1,c1).getMoves().contains("JFR") ||
-		    b.getPlayerRC(r1,c1).getMoves().contains("JFL") ||
+		if (b.getPlayerRC(r1,c1).getMoves().contains("JR") ||
+		    b.getPlayerRC(r1,c1).getMoves().contains("JL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
-		    while (!(b.getPlayerRC(r1,c1).getMoves().contains(m))) {
+		    while (!(b.getPlayerRC(r1,c2).getMoves().contains(m))) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
-	
-			//find row and column for move
-			rc = b.getPlayerRC(r1,c1).findRCbyM(m,r1,c1);
-			r2 = rc[0];
-			c2 = rc[1];
 		    }
+	
+		    //find row and column for move
+		    rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+		    r2 = rc[0];
+		    c2 = rc[1];
+
 		}				    
 	    }
 	    System.out.println();
