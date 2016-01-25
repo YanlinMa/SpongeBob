@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 public abstract class Board {
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
     protected Piece[][] grid = new Piece[8][8];
     protected ArrayList<Player> movables = new ArrayList<Player>(); //pieces w moves left
     protected ArrayList<Player> opponents = new ArrayList<Player>(); //opponents w moves left
     protected ArrayList<Player> friends = new ArrayList<Player>(); //friends w moves left
 
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //default constructor
     public Board() {
 	setup();
         popALists();
     }
 
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //accessors
 
     //return movables AL
