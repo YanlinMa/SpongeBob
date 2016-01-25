@@ -15,8 +15,8 @@ public class LevelH extends Board {
   	
   	//see if any of them can jump
 	for (Player x : opponents) {
-	    if (x.getMoves().contains("JR") ||
-		x.getMoves().contains("JL")) {
+	    if (x.getMoves().contains("JFR") ||
+		x.getMoves().contains("JFL")) {
 		canKill = true;
 	        id = x.getID();
 	    }
@@ -24,12 +24,12 @@ public class LevelH extends Board {
 
     	//see if any of the user's pieces can jump
 	for (Player x : friends) {
-	    if (x.getMoves().contains("JR")) {
+	    if (x.getMoves().contains("JFR")) {
 		dangerLoc = findRCbyID(x.getID());
 		dangerDir = true;
 		danger = true;
 	    }
-	    else if (x.getMoves().contains("JL")) {
+	    else if (x.getMoves().contains("JFL")) {
 		dangerLoc = findRCbyID(x.getID());
 	        dangerDir = false;
 		danger = true;
@@ -39,10 +39,10 @@ public class LevelH extends Board {
   	//if can jump, do it
 	if (canKill) {
 	    ret[0] = id;
-	    if (getPlayer(id).getMoves().contains("JR"))
-		ret[1] = "JR";
+	    if (getPlayer(id).getMoves().contains("JFR"))
+		ret[1] = "JFR";
 	    else
-		ret[1] = "JL";
+		ret[1] = "JFL";
 	}
 	//if not, move away from player's jump
 	else if (danger) {
