@@ -43,6 +43,7 @@ public abstract class Board {
     
     //return Piece at 
     public Piece getPiece(int r, int c) {
+	System.out.println(r + ", " + c);
 	return grid[r][c];
     }
 

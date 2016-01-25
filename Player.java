@@ -90,8 +90,24 @@ public class Player extends Piece {
 		rc[0] = r-1;
 		rc[1] = c-1;
 	    }
-	    else {//if (m.equals("FR"))
+	    else if (m.equals("FR")) {
 		rc[0] = r-1;
+		rc[1] = c+1;
+	    }
+	    else if (m.equals("JL")) {
+		rc[0] = r-2;
+		rc[1] = c-2;
+	    }
+	    else if (m.equals("JR")) {
+		rc[0] = r-2;
+		rc[1] = r+2;
+	    }
+	    else if (m.equals("BL")) {
+		rc[0] = r+1;
+		rc[1] = c-1;
+	    }
+	    else if (m.equals("BR")) {
+		rc[0] = r+1;
 		rc[1] = c+1;
 	    }
 	}
@@ -100,8 +116,24 @@ public class Player extends Piece {
 		rc[0] = r+1;
 		rc[1] = c-1;
 	    }
-	    else {//if (m.equals("FR"))
+	    else if (m.equals("FR")) {
 		rc[0] = r+1;
+		rc[1] = c+1;
+	    }
+	    else if (m.equals("JL")) {
+		rc[0] = r+2;
+		rc[1] = c-2;
+	    }
+	    else if (m.equals("JR")) {
+		rc[0] = r+2;
+		rc[1] = r+2;
+	    }
+	    else if (m.equals("BL")) {
+		rc[0] = r-1;
+		rc[1] = c-1;
+	    }
+	    else if (m.equals("BR")) {
+		rc[0] = r-1;
 		rc[1] = c+1;
 	    }
 	}
