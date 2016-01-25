@@ -252,48 +252,54 @@ public abstract class Board {
 
 
     public boolean jump(int r1, int c1, int r2, int c2) {
+	System.out.println("here");
+
 	
-	if (getPlayerRC(r1-1,c1-1).getFriend()) {
-	    if ((inBounds(r1-1) && inBounds(c1+1))
-		&& (getPiece(r1 - 1,c1 + 1) instanceof Player)) {
-	        if ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
-		    (getPlayerRC(r1-1,c1+1).isOpponent())) {
-		    getPlayerRC(r1-1,c1+1).setStatus(false);
-		    return true;
+	if (getPlayerRC(r1,c1).getFriend()) {
+	    if (inBounds(r1-1) && inBounds(c1+1)) {
+		if (getPiece(r1 - 1,c1 + 1) instanceof Player) {
+		    if ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
+			(getPlayerRC(r1-1,c1+1).isOpponent())) {
+			getPlayerRC(r1-1,c1+1).setStatus(false);
+			return true;
+		    }
 		}
 	    }
-	    if ((inBounds(r1-1) && inBounds(c1-1))
-		&& (getPiece(r1 - 1,c1 - 1) instanceof Player)) {
-		if ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
-		    getPlayerRC(r1-1,c1-1).isOpponent()) {
-		    getPlayerRC(r1-1,c1-1).setStatus(false);
-		    return true;
+
+	    if (inBounds(r1-1) && inBounds(c1-1)) {
+		
+		if (getPiece(r1 - 1,c1 - 1) instanceof Player) {
+		    if ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
+			getPlayerRC(r1-1,c1-1).isOpponent()) {
+			getPlayerRC(r1-1,c1-1).setStatus(false);
+			return true;
+		    }
 		}
 	    }
 	}
 
 	else {
-	    if ((inBounds(r1+1) && inBounds(c1+1))
-		&& (getPiece(r1 + 1,c1 + 1) instanceof Player)) { 
-			
-	        if ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
-		    (getPlayerRC(r1+1,c1+1).getFriend())) {
-		    getPlayerRC(r1+1,c1+1).setStatus(false);
-		    return true;
+	    if (inBounds(r1+1) && inBounds(c1+1)) {
+		
+		if (getPiece(r1 + 1,c1 + 1) instanceof Player) { 	
+		    if ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
+			(getPlayerRC(r1+1,c1+1).getFriend())) {
+			getPlayerRC(r1+1,c1+1).setStatus(false);
+			return true;
+		    }
 		}
 	    }
-
-	    if ((inBounds(r1+1) && inBounds(c1-1))
-		&& (getPiece(r1 + 1,c1 - 1) instanceof Player)) {
-	        if ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
-		    getPlayerRC(r1+1,c1-1).getFriend()) {
-		    getPlayerRC(r1+1,c1-1).setStatus(false);
-		    return true;
+	    if (inBounds(r1+1) && inBounds(c1-1)) {
+		if (getPiece(r1 + 1,c1 - 1) instanceof Player) {
+		    if ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
+			getPlayerRC(r1+1,c1-1).getFriend()) {
+			getPlayerRC(r1+1,c1-1).setStatus(false);
+			return true;
+		    }
 		}
 	    }
 	}
 	return false;
-
     }
     
     

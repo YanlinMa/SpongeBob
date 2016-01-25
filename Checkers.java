@@ -104,19 +104,25 @@ public class Checkers {
 	    r2 = rc[0];
 	    c2 = rc[1];
 
-
-	    //move AI's piece, allow for extra jumps if possible
-	    while (b.move(r1,c1,r2,c2)) {
-		r1 = r2;
-		c1 = c2; //with current coordinates
-		m = b.getPlayer(id).randMove();
-		rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
-		r2 = rc[0];
-		c2 = rc[1];
-		System.out.println(b);
+	    if (b.movables.size() > 0) {
+		System.out.println("movables: " + b.movables.size());
+		//move AI's piece, allow for extra jumps if possible
+		while (b.move(r1,c1,r2,c2)) {
+		    r1 = r2;
+		    c1 = c2; //with current coordinates
+		    m = b.getPlayer(id).randMove();
+		    rc = b.getPlayer(id).findRCbyM(m,r1,c1);   
+		    r2 = rc[0];
+		    c2 = rc[1];
+		    System.out.println(b);
+		}
+	    }
+	    else {
+		break;
 	    }
 
 	}
+	System.out.println("game over");
     }
 
 }
