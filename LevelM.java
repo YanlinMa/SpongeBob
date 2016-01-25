@@ -1,53 +1,115 @@
 import java.util.ArrayList;
 
 public class LevelM extends Board {
-    
-	//pick a random opponent piece
-	Player x = opponents.get((int)(Math.random()*opponents.size()));
-	ret[0] = x.getID();
-    
-    	//possibility to kill off a player piece
-	public void killPlayer() {
-		int[] randP = randPiece();
-		int r = randP[0];
-		int c = randP[1];
-		if ((getPiece(r+1,c+1) instanceof Player)||(getPiece(r+2,c+2) instanceof Empty)) {
-				move(r,c,r+2,c+2);
-				//kill off player piece at (r+1,c+1)
+ 
+    //if there is a jump available, the AI takes it
+    //assumes moves left
+    public String[] AIMove() {
+	boolean canKill = false;
+	String id = "";
+	String move = "";
+	int[] dangerLoc = new int[2];
+	boolean dangerDir = false; //true -> right, false -> left
+	boolean danger = false;
+	String[] ret = new String[2];
+
+	for (Player x : opponents) {
+	    if (x.getMoves().contains("JR") ||
+		x.getMoves().contains("JL")) {
+		canKill = true;
+	        id = x.getID();
+	    }
+	}
+
+	for (Player x : friends) {
+	    if (x.getMoves().contains("JR")) {
+		dangerLoc = findRCbyID(x.getID());
+		dangerDir = true;
+		danger = true;
+	    }
+	    else if (x.getMoves().contains("JL")) {
+		dangerLoc = findRCbyID(x.getID());
+	        dangerDir = false;
+		danger = true;
+	    }
+	}
+
+
+	if (danger && canKill) {
+	    if (Math.random() < .5) {
+		ret[0] = id;
+		if (getPlayer(id).getMoves().contains("JR"))
+		    ret[1] = "JR";
+		else
+		    ret[1] = "JL";
+	    }
+	    else {
+		ret[0] = id;
+		if (dangerDir) {
+		    if (grid[dangerLoc[0]+1][dangerLoc[1]+1] instanceof Player) {
+			if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FR")) {
+			    ret[1] = "FR";
 			}
-		}
-		else if ((getPiece(r+1,c-1) instanceof Player)||(getPiece(r+2,c-2) instanceof Empty)) {
-				move(r,c,r+2,c-2);
-				//kill off player piece at (r+1,c-1)
+			else if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FL")) {
+			    ret[1] = "FL";
 			}
+		    }
 		}
-	}
-	
-	//if opponent piece is in danger, move it away
-	public void avoidKill() {
-		int[] randP = randPiece();
-		int r = randP[0];
-		int c = randP[1];
-		if ((getPiece(r+1,c+1) instanceof Player)||!(getPiece(r+2,c+2) instanceof Empty)||(getPiece(r+1,c-1) instanceof Empty)) {
-			move(r,c,r+1,c-1);
+		else {
+		    if (grid[dangerLoc[0]+1][dangerLoc[1]-1] instanceof Player) {
+			if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FR")) {
+			    ret[1] = "FR";
+			}
+			else if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FL")) {
+			    ret[1] = "FL";
+			}
+		    }
 		}
-		else if ((getPiece(r+1,c-1) instanceof Player)||!(getPiece(r+2,c-2) instanceof Empty)||(getPiece(r+1,c+1) instanceof Empty)) {
-			move(r,c,r+1,c+1);
+	    }
+	}
+
+	else if (danger) {
+	    ret[0] = id;
+	    if (dangerDir) {
+		if (grid[dangerLoc[0]+1][dangerLoc[1]+1] instanceof Player) {
+		    if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FR")) {
+			ret[1] = "FR";
+		    }
+		    else if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FL")) {
+			ret[1] = "FL";
+		    }
 		}
+	    }
+	    else {
+		if (grid[dangerLoc[0]+1][dangerLoc[1]-1] instanceof Player) {
+		    if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FR")) {
+			ret[1] = "FR";
+		    }
+		    else if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FL")) {
+			ret[1] = "FL";
+		    }
+		}
+	    }
 	}
-	
-	//if no interaction with player pieces, move a random piece forward
-	public void random() {
-		String m = x.randMove();
-		ret[1] = m;
+
+	else if (canKill) {
+	    ret[0] = id;
+	    if (getPlayer(id).getMoves().contains("JR"))
+		ret[1] = "JR";
+	    else
+		ret[1] = "JL";
 	}
-	
-	public String[] AIMove() {
-		String[] ret = new String[2];
-		killPlayer();
-		avoidKill();
-		random();
-		return ret;
+
+	else { //move random piece randomly
+	    Player x = opponents.get((int)(Math.random()*opponents.size()));
+	    ret[0] = x.getID();
+	    ret[1] = x.randMove();
 	}
-	
+
+	return ret;
+
+    }
+
 }
+    
+       
