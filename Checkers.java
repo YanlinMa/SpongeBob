@@ -1,3 +1,5 @@
+//INFO: driver for other fxns, contains play functionality
+
 import cs1.Keyboard;
 
 public class Checkers {
