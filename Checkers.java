@@ -17,6 +17,8 @@ public class Checkers {
 	Checkers game = new Checkers();
 	game.play();
 
+	System.out.flush();
+
     }
 
 
