@@ -20,16 +20,18 @@ public class Checkers {
 	System.out.println("Choose a level (E,M): ");
 	String level = Keyboard.readString();
 
-	while (!(level.equals("E") || levels.equals("M"))) {
+	while (!(level.equals("E") || level.equals("M"))) {
 	    System.out.print("Please enter one of the level options: " );
 	    level = Keyboard.readString();
 	}
 	
 	if (level.equals("E")) {
-	    playE();
+	    while (game.playE())
+		game.playE();
 	}
 	else {
-	    playM();
+	    while (game.playM())
+		game.playM();
 	}
 
 
@@ -38,7 +40,7 @@ public class Checkers {
 
     //============================================
     //play levelE
-    public void playE() {
+    public boolean playE() {
 
 
 	LevelE b = new LevelE();
@@ -119,13 +121,30 @@ public class Checkers {
 
 	}
 
-	if (b.opponents.size() == 0) {
-	    System.out.println("Congratulations, you have won the game.");
-	}
+	//end game messages
+	if (b.movables.size() == 0)
+	    System.out.println("Tie game!");
 	
-	if (b.friends.size() == 0) {
+	if (b.opponents.size() == 0) 
+	    System.out.println("Congratulations, you have won the game.");
+	
+	if (b.friends.size() == 0) 
 	    System.out.println("Sorry, you have lost the game.");
+	
+
+	
+	//play again?
+	System.out.print("Would you like to play again? (Y/N) ");
+	String x = Keyboard.readString();
+
+	while (!(x.equals("Y") || x.equals("N"))) {
+	    System.out.println("Please enter Y or N: ");
+	    x = Keyboard.readString();
 	}
+
+	if (x.equals("Y"))
+	    return true;
+	return false;
 	
     }
 
@@ -134,7 +153,7 @@ public class Checkers {
 
     //=============================================
     //play levelM
-    public void playM() {
+    public boolean playM() {
 
 
 	LevelM b = new LevelM();
@@ -215,13 +234,30 @@ public class Checkers {
 
 	}
 
-	if (b.opponents.size() == 0) {
-	    System.out.println("Congratulations, you have won the game.");
-	}
+	//end game messages
+	if (b.movables.size() == 0)
+	    System.out.println("Tie game!");
 	
-	if (b.friends.size() == 0) {
+	if (b.opponents.size() == 0) 
+	    System.out.println("Congratulations, you have won the game.");
+	
+	if (b.friends.size() == 0) 
 	    System.out.println("Sorry, you have lost the game.");
+	
+
+	
+	//play again?
+	System.out.print("Would you like to play again? (Y/N) ");
+	String x = Keyboard.readString();
+
+	while (!(x.equals("Y") || x.equals("N"))) {
+	    System.out.println("Please enter Y or N: ");
+	    x = Keyboard.readString();
 	}
+
+	if (x.equals("Y"))
+	    return true;
+	return false;
 	
     }
 
