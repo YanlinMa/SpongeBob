@@ -115,8 +115,7 @@ public class Checkers {
 		c2 = rc[1];
 		System.out.println(b);
 	    }
-	
-	    System.out.println(b);
+
 	}
     }
 

@@ -255,7 +255,7 @@ public abstract class Board {
 	
 	if (getPlayerRC(r1-1,c1-1).getFriend()) {
 	    if ((inBounds(r1-1) && inBounds(c1+1))
-		&& getPiece(r1 - 1,c1 + 1) instanceof Player) {
+		&& (getPiece(r1 - 1,c1 + 1) instanceof Player)) {
 	        if ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
 		    (getPlayerRC(r1-1,c1+1).isOpponent())) {
 		    getPlayerRC(r1-1,c1+1).setStatus(false);
@@ -263,7 +263,7 @@ public abstract class Board {
 		}
 	    }
 	    if ((inBounds(r1-1) && inBounds(c1-1))
-		&& getPiece(r1 - 1,c1 - 1) instanceof Player) {
+		&& (getPiece(r1 - 1,c1 - 1) instanceof Player)) {
 		if ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
 		    getPlayerRC(r1-1,c1-1).isOpponent()) {
 		    getPlayerRC(r1-1,c1-1).setStatus(false);
@@ -273,8 +273,8 @@ public abstract class Board {
 	}
 
 	else {
-	    if (inBounds(r1+1) && inBounds(c1+1)
-		&& getPiece(r1 + 1,c1 + 1) instanceof Player) { //check if outofBounds
+	    if ((inBounds(r1+1) && inBounds(c1+1))
+		&& (getPiece(r1 + 1,c1 + 1) instanceof Player)) { 
 			
 	        if ((r1 + 2 == r2 && c2 - c1 == 2) && (getPiece(r1 + 1,c1 + 1).getStatus()) &&
 		    (getPlayerRC(r1+1,c1+1).getFriend())) {
@@ -282,9 +282,9 @@ public abstract class Board {
 		    return true;
 		}
 	    }
-	    if (inBounds(r1+1) && inBounds(c1-1)
-		&& getPiece(r1 + 1,c1 - 1) instanceof Player) {
 
+	    if ((inBounds(r1+1) && inBounds(c1-1))
+		&& (getPiece(r1 + 1,c1 - 1) instanceof Player)) {
 	        if ((r1 + 2 == r2 && c2 - c1 == -2) && (getPiece(r1 + 1,c1 - 1).getStatus()) &&
 		    getPlayerRC(r1+1,c1-1).getFriend()) {
 		    getPlayerRC(r1+1,c1-1).setStatus(false);
