@@ -123,5 +123,3 @@ DEVLOG
 - Checkers.java
 - added functionality to clear the screen after each game
   DONE BY: Andrea
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
