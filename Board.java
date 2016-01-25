@@ -253,9 +253,7 @@ public abstract class Board {
 
 
     public boolean jump(int r1, int c1, int r2, int c2) {
-	System.out.println("here");
 
-	
 	if (getPlayerRC(r1,c1).getFriend()) {
 	    if (inBounds(r1-1) && inBounds(c1+1)) {
 		if (getPiece(r1 - 1,c1 + 1) instanceof Player) {
