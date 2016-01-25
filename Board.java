@@ -376,16 +376,6 @@ public abstract class Board {
 		getPlayerRC(r,c).getMoves().add("BR");
 		hasMoves++;
 	    }
-	    /*
-	    if (proper(r,c,r+2,c-2)) {
-		getPlayerRC(r,c).getMoves().add("JBL");
-		hasMoves++;
-	    }
-	    if (proper(r,c,r+2,c+2)) {
-		getPlayerRC(r,c).getMoves().add("JBR");
-		hasMoves++;
-	    }
-	    */
 	}
 	else {
 	    if ( proper(r,c,r+1,c-1)) {
@@ -412,16 +402,6 @@ public abstract class Board {
 		getPlayerRC(r,c).getMoves().add("BR");
 		hasMoves++;
 	    }
-	    /*
-	    if (proper(r,c,r-2,c-2)) {
-		getPlayerRC(r,c).getMoves().add("JBL");
-		hasMoves++;
-	    }
-	    if (proper(r,c,r-2,c+2)) {
-		getPlayerRC(r,c).getMoves().add("JBR");
-		hasMoves++;
-	    }
-	    */
 	}
 	return hasMoves > 0;
     }

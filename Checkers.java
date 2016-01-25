@@ -73,7 +73,7 @@ public class Checkers {
 	    rc = b.getPlayer(id).findRCbyM(m,r1,c1);
 	    int r2 = rc[0];
 	    int c2 = rc[1];
-
+	    System.out.println("r2: " + r2 + ", " + "c2: " + c2); 
 
 	    //move users piece -- STILL NEED EXTRA JUMP FXN
 	    b.move(r1,c1,r2,c2);
