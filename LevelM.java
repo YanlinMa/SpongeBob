@@ -100,16 +100,14 @@ public class LevelM extends Board {
 		ret[1] = "JL";
 	}
 
-	else { //move random piece randomly
+        if (ret[1] == null || ret[0] == null) { //move random piece randomly
 	    Player x = opponents.get((int)(Math.random()*opponents.size()));
 	    ret[0] = x.getID();
 	    ret[1] = x.randMove();
 	}
-
+	System.out.println(ret[1]);
 	return ret;
 
     }
 
 }
-    
-       
