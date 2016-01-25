@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 
+//level hard
+
 public class LevelH extends Board {
  
-    //if there is a jump available, the AI takes it
-    //assumes moves left
+    //prioritizes moves that kill player pieces
+    //moves pieces away from danger
     public String[] AIMove() {
+    	
 	boolean canKill = false;
 	String id = "";
 	String move = "";
@@ -13,7 +16,7 @@ public class LevelH extends Board {
 	boolean danger = false;
 	String[] ret = new String[2];
   	
-  	//see if any of them can jump
+  	//see if any of the pieces can jump
 	for (Player x : opponents) {
 	    if (x.getMoves().contains("JFR") ||
 		x.getMoves().contains("JFL")) {
@@ -22,7 +25,7 @@ public class LevelH extends Board {
 	    }
 	}
 
-    	//see if any of the user's pieces can jump
+    	//see if any of the player's pieces can jump
 	for (Player x : friends) {
 	    if (x.getMoves().contains("JFR")) {
 		dangerLoc = findRCbyID(x.getID());
@@ -36,7 +39,7 @@ public class LevelH extends Board {
 	    }
 	}
 
-  	//if can jump, do it
+  	//if a jump is possible, execute it
 	if (canKill) {
 	    ret[0] = id;
 	    if (getPlayer(id).getMoves().contains("JFR"))
@@ -44,6 +47,7 @@ public class LevelH extends Board {
 	    else
 		ret[1] = "JFL";
 	}
+	
 	//if not, move away from player's jump
 	else if (danger) {
 	    ret[0] = id;
@@ -68,7 +72,8 @@ public class LevelH extends Board {
 		}
 	    }
 	}
-	//finally, if all fails, move randomly
+	
+	//finally, if previous two conditions are not met, execute random move
         if (ret[1] == null || ret[0] == null) { //move random piece randomly
 	    Player x = opponents.get((int)(Math.random()*opponents.size()));
 	    ret[0] = x.getID();
