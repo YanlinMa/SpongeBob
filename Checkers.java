@@ -95,7 +95,7 @@ public class Checkers {
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
-		    while ((!(b.getPlayerRC(r1,c2).getMoves().contains(m)) || !m.substring(0).equals("J"))) {
+		    while (!m.substring(0,1).equals("J")) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
 		    }
@@ -229,7 +229,7 @@ public class Checkers {
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
 				       b.getPlayerRC(r1,c1).getMoves() + ": ");
-		    while (!(b.getPlayerRC(r1,c2).getMoves().contains(m)) || !m.substring(0).equals("J")) {
+		    while (!m.substring(0,1).equals("J")) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
 		    }
