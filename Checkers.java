@@ -119,15 +119,15 @@ public class Checkers {
 	    System.out.println("Tie game!");
 	
 	if (b.opponents.size() == 0) 
-	    System.out.println("Congratulations, you have won the game.");
+	    System.out.println("Congratulations, you have won the game.\n");
 	
 	if (b.friends.size() == 0) 
-	    System.out.println("Sorry, you have lost the game.");
+	    System.out.println("Sorry, you have lost the game.\n");
 	
 
 	
 	//play again?
-	System.out.print("Would you like to play again? (Y/N) ");
+	System.out.print("Would you like to play again? (Y/N): ");
 	String x = Keyboard.readString();
 
 	while (!(x.equals("Y") || x.equals("N"))) {
@@ -152,7 +152,7 @@ public class Checkers {
 	LevelH b = new LevelH();
         
 
-	System.out.println("DIRECTIONS\n");
+	System.out.println("\nDIRECTIONS\n");
 	System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
 	System.out.println("BEGIN");
 
