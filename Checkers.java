@@ -44,12 +44,13 @@ public class Checkers {
 	LevelE b = new LevelE();
 	System.out.println("DIRECTIONS\n");
 	System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
-	System.out.println("BEGIN\n");
+	System.out.println("BEGIN");
 
 	while (b.opponents.size() > 0 && b.friends.size() > 0) {
 	    
 	    //print board
-	    System.out.print(b);
+	    System.out.println("");
+	    System.out.println(b);
 	
 	    //user selects piece to move
 	    System.out.print("Enter the ID (first two characters displayed) of the piece to move: ");
@@ -82,6 +83,7 @@ public class Checkers {
 
 	    //move users piece -- STILL NEED EXTRA JUMP FXN
 	    b.move(r1,c1,r2,c2);
+	    System.out.println("");
 	    System.out.print(b);
 
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
