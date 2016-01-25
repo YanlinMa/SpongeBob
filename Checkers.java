@@ -10,7 +10,7 @@ public class Checkers {
 	Checkers game = new Checkers();
 
 	//play easy or hard depending on user input
-	System.out.println("Choose a level (E,H): ");
+	System.out.print("Choose a level (E,H): ");
 	String level = Keyboard.readString();
 
 	while (!(level.equals("E") || level.equals("H"))) {
