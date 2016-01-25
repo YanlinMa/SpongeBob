@@ -1,11 +1,5 @@
 import java.util.ArrayList;
 
-/*TO THINK ABOUT / DO:
-
-  - naming system? -- implement later
-
- */
-
 public abstract class Piece {
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
