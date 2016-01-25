@@ -203,28 +203,28 @@ public abstract class Board {
 		if (((Player)getPiece(r1,c1)).getFriend()) {
 		    prop = (r1 - 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move forward
 
-		    if (!prop) {
-			//check for jumps and king moves
 
-			if ((getPiece(r1,c1) instanceof Player)) {
-			    if (getPlayerRC(r1,c1).isKing())
-				prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
-			}
+		    //check for jumps and king moves
 
-			if ((inBounds(r1-1) && inBounds(c1+1)) //JR
-			    && getPiece(r1 - 1,c1 + 1) instanceof Player) {
-				prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
-					(getPlayerRC(r1-1,c1+1).isOpponent()));
-			}
-			if ((inBounds(r1-1) && inBounds(c1-1)) //JL
-			    && getPiece(r1 - 1,c1 - 1) instanceof Player) {
-			    prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
-				    getPlayerRC(r1-1,c1-1).isOpponent());
-			}
+		    if (!prop && (getPiece(r1,c1) instanceof Player)) {
+			if (getPlayerRC(r1,c1).isKing())
+			    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
 		    }
+
+		    if (!prop && (inBounds(r1-1) && inBounds(c1+1)) //JR
+			&& getPiece(r1 - 1,c1 + 1) instanceof Player) {
+			prop = ((r1 - 2 == r2 && c2 - c1 == 2) && (getPiece(r1 - 1,c1 + 1).getStatus()) &&
+				(getPlayerRC(r1-1,c1+1).isOpponent()));
+		    }
+		    if (!prop && (inBounds(r1-1) && inBounds(c1-1)) //JL
+			&& getPiece(r1 - 1,c1 - 1) instanceof Player) {
+			prop = ((r1 - 2 == r2 && c2 - c1 == -2) && (getPiece(r1 - 1,c1 - 1).getStatus()) &&
+				getPlayerRC(r1-1,c1-1).isOpponent());
+		    }
+		    
 		}
 		else {
-		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);  //if simple move forward
+		    prop = (r1 + 1 == r2 && Math.abs(c2 - c1) == 1);
 
 		    if ((!prop && getPiece(r1,c1) instanceof Player)) {
 			if (getPlayerRC(r1,c1).isKing())
