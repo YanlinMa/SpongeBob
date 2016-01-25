@@ -50,7 +50,7 @@ public class Checkers {
 	    
 	    //print board
 	    System.out.println();
-	    System.out.println(b);
+	    System.out.print(b);
 	
 	    //user selects piece to move
 	    System.out.print("Enter the ID (first two characters displayed) of the piece to move: ");
