@@ -41,7 +41,10 @@ public class Checkers {
         
 
 	System.out.println("\nDIRECTIONS\n");
-	System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
+	System.out.println("The ID of each piece is named by the first two characters, composed of a letter and a number,");
+	System.out.println("with the third character displaying what kind of piece it is (P for regular piece, K for king)");
+	System.out.println("The directional inputs include front left, front right, back left, and back right,");
+	System.out.println("and any direction that has a 'J' in it stands for jump\n");
 	System.out.println("BEGIN");
 
 	while (b.opponents.size() > 0 && b.friends.size() > 0) {
