@@ -94,8 +94,8 @@ public class Checkers {
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
-				       b.getPlayer(id).getMoves() + ": ");
-		    while (!(b.getPlayer(id).getMoves().contains(m))) {
+				       b.getPlayerRC(r1,c1).getMoves() + ": ");
+		    while (!(b.getPlayerRC(r1,c1).getMoves().contains(m))) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
 	
@@ -227,13 +227,13 @@ public class Checkers {
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBL") ||
 		    b.getPlayerRC(r1,c1).getMoves().contains("JBR")) {
 		    System.out.println("Jump again: " +
-				       b.getPlayer(id).getMoves() + ": ");
-		    while (!(b.getPlayer(id).getMoves().contains(m))) {
+				       b.getPlayerRC(r1,c1).getMoves() + ": ");
+		    while (!(b.getPlayerRC(r1,c1).getMoves().contains(m))) {
 			System.out.print("Invalid move. Please choose another move: ");
 			m = Keyboard.readString();
 	
 			//find row and column for move
-			rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+			rc = b.getPlayerRC(r1,c1).findRCbyM(m,r1,c1);
 			r2 = rc[0];
 			c2 = rc[1];
 		    }
