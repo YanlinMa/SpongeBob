@@ -1,11 +1,5 @@
 import java.util.ArrayList;
 
-/*TO THINK ABOUT / DO:
-  
-  - actually make it look like a piece
-
-*/
-
 public class Player extends Piece {
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
