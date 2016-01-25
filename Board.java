@@ -1,30 +1,21 @@
-//INFO: contains checkerboard and information on it
-
 import java.util.ArrayList;
 
+//contains checkerboard information
 
 public abstract class Board {
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //instance variables
-    
     protected Piece[][] grid = new Piece[8][8];
     protected ArrayList<Player> movables = new ArrayList<Player>(); //pieces w moves left
     protected ArrayList<Player> opponents = new ArrayList<Player>(); //opponents w moves left
     protected ArrayList<Player> friends = new ArrayList<Player>(); //friends w moves left
 
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //constructor
-    
+    //default constructor
     public Board() {
 	setup();
         popALists();
     }
 
-    
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //accessors
 
     //return movables AL
@@ -41,7 +32,6 @@ public abstract class Board {
     public ArrayList<Player> getFriends() {
 	return friends;
     }
-
     
     //return Piece at 
     public Piece getPiece(int r, int c) {
@@ -73,36 +63,28 @@ public abstract class Board {
 	    return getPlayerRC(r,c);
 	return null;
     }
-
     
     //get Player by rc
     public Player getPlayerRC(int r, int c) {
 	return (Player)getPiece(r,c);
     }
     
-
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //helpers
+    //helper function
 
     //checks if within checkerboard
     public static boolean inBounds(int x) {
 	return x >= 0 && x <= 7;
     }
-
-
-    
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //ABSTRACT
+    //abstract method
     
     public abstract String[] AIMove();
-    
-
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //methods
 
-           
     //populates grid with Pieces in starting formation
     public void setup() {
 	
@@ -135,8 +117,6 @@ public abstract class Board {
 
     }
 
-
-
     //populate ALs
     public void popALists() {
 	movables.clear();
@@ -161,8 +141,6 @@ public abstract class Board {
 	movables.addAll(friends);
     }
 
-    
-    
     //prints out checkerboard (grid)
     public String toString() {
 	String retStr = "";
@@ -175,8 +153,6 @@ public abstract class Board {
 	return retStr;
     }
 
-
-    //================================================
     //moving pieces
 
     //if usable piece
@@ -189,7 +165,6 @@ public abstract class Board {
 	return false;
     }
 
-    
     //checks if move is ok
     //no jumps right now, no kings
     public boolean proper(int r1, int c1, int r2, int c2) {
@@ -280,10 +255,8 @@ public abstract class Board {
 		}
 	    }
 	}
-
 	return prop;	
     }
-
 
     //performs jump if given jump coordinates by removing player jumped over
     //returns true if jump is performed, false otherwise
@@ -333,8 +306,6 @@ public abstract class Board {
 		    }
 		}
 	    }
-	    
-
 	}
 
 	//opponent pieces
@@ -383,7 +354,6 @@ public abstract class Board {
 	return false;
     }
     
-    
     //'moves' pieces
     //returns true if move was jump
     public boolean move(int r1, int c1, int r2, int c2) {
@@ -419,7 +389,6 @@ public abstract class Board {
 	return isJump;
     }
     
-
     //add to the player's moves AL
     //return true if has moves, false otherwise -- JUMPING BACKWARDS NOT IMPLEMENTED
     public boolean addMoves(int r, int c) {
@@ -498,7 +467,9 @@ public abstract class Board {
 		hasMoves++;
 	    }
 	}
+	
 	return hasMoves > 0;
+	
     }
 
 }
