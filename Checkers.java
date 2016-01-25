@@ -1,10 +1,3 @@
-/* TO DO:
-   - elaborate on welcome message, instructions
-   - winning / tie games
-   - play again features
-*/
-
-
 import cs1.Keyboard;
 
 public class Checkers {
@@ -16,11 +9,11 @@ public class Checkers {
 	
 	Checkers game = new Checkers();
 
-	//play easy or medium depending on user input
-	System.out.println("Choose a level (E,M): ");
+	//play easy or hard depending on user input
+	System.out.println("Choose a level (E,H): ");
 	String level = Keyboard.readString();
 
-	while (!(level.equals("E") || level.equals("M"))) {
+	while (!(level.equals("E") || level.equals("H"))) {
 	    System.out.print("Please enter one of the level options: " );
 	    level = Keyboard.readString();
 	}
@@ -30,8 +23,8 @@ public class Checkers {
 		game.playE();
 	}
 	else {
-	    while (game.playM())
-		game.playM();
+	    while (game.playH())
+		game.playH();
 	}
 
 
@@ -152,11 +145,11 @@ public class Checkers {
 
 
     //=============================================
-    //play levelM
-    public boolean playM() {
+    //play levelH
+    public boolean playH() {
 
 
-	LevelM b = new LevelM();
+	LevelH b = new LevelH();
         
 
 	System.out.println("DIRECTIONS\n");
