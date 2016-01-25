@@ -9,11 +9,21 @@ import cs1.Keyboard;
 
 public class Checkers {
 
+	private boolean win = false;
+
     public static void main(String[] args) {
 	System.out.println("\n\t\t\tWELCOME TO\n\t\t\t CHECKERS\n");
 	
 	Checkers game = new Checkers();
 	game.play();
+	
+	if (b.opponent.size()==0) {
+		System.out.println("Congratulations, you have won the game.");
+	}
+	
+	if (b.player.size()==0) {
+		System.out.println("Sorry, you have lost the game.")
+	}
 
     }
 
@@ -100,6 +110,7 @@ public class Checkers {
 	    b.move(r1,c1,r2,c2);
 
 	}
+	
     }
 
 }
