@@ -1,5 +1,6 @@
 #CHECKERS
 
+*Team SpongeBob - Andrea Ma, Jannie Li*
 
 ##To Execute:
 Type 
@@ -18,6 +19,12 @@ Make sure you're in the right folder (SpongeBob).
 5. Your game will end with either a tie or a winner. You will then be offered the option of playing it again.
 
 
+##Levels
+
+* **Easy (E)** : You are playing against a random select-random move system.
+* **Hard (H)** : You are playing against a kill / move away depending on what's possible system.
+
+
 ##Moves
 
 * **FR** : Forward Right
@@ -28,13 +35,3 @@ Make sure you're in the right folder (SpongeBob).
 * **BL** : Back Left
 * **JBR** : Jump Back Right
 * **JBL** : Jump Back Left
-
-
-##Levels
-* **Easy (E)** : You are playing against a random select-random move system.
-* **Hard (H)** : You are playing against a kill / move away depending on what's possible system.
-
-
-
-
-*Team SpongeBob-- Andrea Ma, Jannie Li*
