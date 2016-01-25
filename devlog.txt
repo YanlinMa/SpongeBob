@@ -113,16 +113,11 @@ DEVLOG
 - debugged the code
   DONE BY: SpongeBob
 
--
+- levelM.java, which became levelH.java
+- generally worked on all files, writing and debugging new functions
   DONE BY: hyketwig
   
 - 
   DONE BY: Andrea
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- complete barebones implementation (working one-player model)
-- finish random AI
-- add kings and jumps (not mult jumps yet)
-- plan and set up piece identification system
-- levels planning
