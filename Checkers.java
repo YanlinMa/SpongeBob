@@ -41,13 +41,16 @@ public class Checkers {
 	LevelH b = new LevelH();
 	}
 	*/
-	LevelM b = new LevelM();
+	LevelE b = new LevelE();
+	System.out.println("DIRECTIONS");
+	System.out.println(b);
+	System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
+	System.out.println("\nBEGIN\n\n");
 
-	while (b.movables.size() > 0) {
+	while (b.opponents.size() > 0 && b.friends.size() > 0) {
+	    
 	    //print board
 	    System.out.println(b);
-	
-            //System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
 	
 	    //user selects piece to move
 	    System.out.print("Enter the ID (first two characters displayed) of the piece to move: ");
@@ -78,40 +81,47 @@ public class Checkers {
 	    int r2 = rc[0];
 	    int c2 = rc[1];
 
-
 	    //move users piece -- STILL NEED EXTRA JUMP FXN
 	    b.move(r1,c1,r2,c2);
 	    System.out.println(b);
 
-
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	    //call for AI move
-	    String[] ai = b.AIMove();
-	    id = ai[0];
-	    m = ai[1];
+	    //if moves left, AI goes
+	    if (b.opponents.size() > 0) {
+	    
+		//call for AI move
+		String[] ai = b.AIMove();
+		id = ai[0];
+		m = ai[1];
 
-	    //find row and column of player w this id
-	    rc = b.findRCbyID(id);
-	    r1 = rc[0];
-	    c1 = rc[1];	
+		//find row and column of player w this id
+		rc = b.findRCbyID(id);
+		r1 = rc[0];
+		c1 = rc[1];	
 	
-	    //find row and column for move
-	    rc = b.getPlayer(id).findRCbyM(m,r1,c1);
-	    r2 = rc[0];
-	    c2 = rc[1];
+		//find row and column for move
+		rc = b.getPlayer(id).findRCbyM(m,r1,c1);
+		r2 = rc[0];
+		c2 = rc[1];
 
-	    b.move(r1,c1,r2,c2);
+		b.move(r1,c1,r2,c2);
+
+	    }
+
+	    else {
+		break;
+	    }
 
 	}
 
-	/*if (b.opponent.size()==0) {
+	if (b.opponents.size() == 0) {
 		System.out.println("Congratulations, you have won the game.");
 	}
 	
-	if (b.player.size()==0) {
+	if (b.friends.size() == 0) {
 		System.out.println("Sorry, you have lost the game.");
-	}*/
+	}
 	
     }
 
