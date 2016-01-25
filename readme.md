@@ -31,8 +31,9 @@ Make sure you're in the right folder (SpongeBob).
 
 
 ##Levels
-* **Easy(E)** : You are playing against a random select-random move system.
-* **Hard(H)** : You are playing against a kill / move away depending on what's possible system.
+* **Easy (E)** : You are playing against a random select-random move system.
+* **Hard (H)** : You are playing against a kill / move away depending on what's possible system.
+
 
 
 
