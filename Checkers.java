@@ -39,7 +39,7 @@ public class Checkers {
 	LevelE b = new LevelE();
         
 
-	System.out.println("DIRECTIONS\n");
+	System.out.println("\nDIRECTIONS\n");
 	System.out.println("The pieces are named by IDs composed of a letter and a number,\nwith the third character displaying what kind of piece it is (P for regular piece, K for king)\n");
 	System.out.println("BEGIN");
 
