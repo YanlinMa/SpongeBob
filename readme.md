@@ -1,28 +1,34 @@
-CHECKERS
+#CHECKERS
 
-The game gives the user an option of playing against another person on the same Terminal session, or against AI methods
-on the computer.
 
-If the computer is chosen as an opponent, the player can then choose what level to play, out of easy, medium, or hard.
+##To Execute:
+Type 
+`javac Checkers.java` then
+`java Checkers`
+into Termiinal after cloning or downloading this repo. Make sure you're in the right folder (SpongeBob).
 
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Gameplay:
+##Gameplay:
 
-Once the original board is displayed for the player, they are asked to select the ID of the piece they want to move,
-and a list of possible directions will be displayed for them. The player will then input one of the directions provided,
-which may include FL (front left), FR (front right), and for king pieces, BL (back left), and BR (back right).
+1. Choose a level (E or H).
+2. The game will begin. 
+3. Type the ID of the piece you want to move to select it. (The ID is the first two letters of what is displayed on your side of the checkerboard. You can tell a piece is yours if it doesn't have "AI" in front. The last letters, either P or K, represent the status of your piece. P is a player who can move only in the opposite direction from its original side. K is a king who can move in any direction.
+4. You will be presented with a list of possible moves. Type one to choose it. The moves will be explained below.
+5. Your game will end with either a tie or a winner. You will then be offered the option of playing it again.
 
-After the player makes their move, either the second player will then take their turn, or the computer will generate a move
-based on the difficulty of the game.
 
-The goal of the game is to take out all of the opponent's pieces, and the game will be won when all of the opponent's pieces
-have been killed, or when the opponent has no more moves. Likewise, the player loses the game if all of their pieces have
-been killed, or if they have no more possible moves.
+##Moves
 
-~~~~~~~~~~~~~~~~~~~~~~~~~
+* **FR** : Forward Right
+* **FL** : Forward Left
+* **JR** : Jump Right
+* **JL** : Jump Left
+* **BR** : Back Right
+* **BL** : Back Left
+* **JBR** : Jump Back Right
+* **JBL** : Jump Back Left
 
-To execute:
 
-javac Checkers.java
-java Checkers
+##Levels
+* **Easy(E)** : You are playing against a random select-random move system.
+* **Hard(H)** : You are playing against a jump / move away depending on what's possible system.
