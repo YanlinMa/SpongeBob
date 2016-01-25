@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Piece {
 
+    //instance variables
     protected boolean king;
     protected boolean status; 
     protected int row;
