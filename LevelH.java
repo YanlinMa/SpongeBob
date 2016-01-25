@@ -45,7 +45,7 @@ public class LevelH extends Board {
 	    }
 	    else {
 		ret[0] = id;
-		if (dangerDir) {
+		if (dangerDir && inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]+1)) {
 		    if (grid[dangerLoc[0]+1][dangerLoc[1]+1] instanceof Player) {
 			if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FR")) {
 			    ret[1] = "FR";
@@ -55,7 +55,7 @@ public class LevelH extends Board {
 			}
 		    }
 		}
-		else {
+		else if (inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]-1)){
 		    if (grid[dangerLoc[0]+1][dangerLoc[1]-1] instanceof Player) {
 			if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FR")) {
 			    ret[1] = "FR";
@@ -70,7 +70,7 @@ public class LevelH extends Board {
 
 	else if (danger) {
 	    ret[0] = id;
-	    if (dangerDir) {
+	    if (dangerDir && inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]+1)) {
 		if (grid[dangerLoc[0]+1][dangerLoc[1]+1] instanceof Player) {
 		    if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]+1).getMoves().contains("FR")) {
 			ret[1] = "FR";
@@ -80,7 +80,7 @@ public class LevelH extends Board {
 		    }
 		}
 	    }
-	    else {
+	    else if (inBounds(dangerLoc[0]+1) && inBounds(dangerLoc[1]-1)){
 		if (grid[dangerLoc[0]+1][dangerLoc[1]-1] instanceof Player) {
 		    if (getPlayerRC(dangerLoc[0]+1,dangerLoc[1]-1).getMoves().contains("FR")) {
 			ret[1] = "FR";
