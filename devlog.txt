@@ -111,13 +111,17 @@ DEVLOG
 
 1/24
 - debugged the code
+- worked on all files
+- finalized README.md
   DONE BY: SpongeBob
 
 - levelM.java, which became levelH.java
-- generally worked on all files, writing and debugging new functions
+- writing and debugging new functions
   DONE BY: hyketwig
   
-- 
+- improved display
+- Checkers.java
+- added functionality to clear the screen after each game
   DONE BY: Andrea
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
