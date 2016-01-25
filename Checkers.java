@@ -26,7 +26,8 @@ public class Checkers {
 	    while (game.playH())
 		game.playH();
 	}
-
+	
+	System.out.flush();
 
     }
 
