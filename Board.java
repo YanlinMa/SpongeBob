@@ -43,7 +43,7 @@ public abstract class Board {
     
     //return Piece at 
     public Piece getPiece(int r, int c) {
-	System.out.println(r + ", " + c);
+	//System.out.println(r + ", " + c);
 	return grid[r][c];
     }
 
@@ -400,6 +400,7 @@ public abstract class Board {
 	    }
 	    if (proper(r,c,r+2,c+2)) {
 		getPlayerRC(r,c).getMoves().add("JR");
+		hasMoves++;
 	    }
 	    if (proper(r,c,r-1,c-1)) {
 		getPlayerRC(r,c).getMoves().add("BL");
