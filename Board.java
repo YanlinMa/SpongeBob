@@ -316,18 +316,17 @@ public abstract class Board {
 
 	    //move piece
 	    boolean side = (getPlayerRC(r1,c1).getFriend());
+	    boolean king = (getPlayerRC(r1,c1).isKing());
 	    boolean stat1 = getPiece(r1,c1).getStatus();
 	    boolean stat2 = getPiece(r2,c2).getStatus();
 	    getPiece(r1,c1).setStatus(!stat1);
 	    getPiece(r2,c2).setStatus(!stat2);
 	    ((Player)getPiece(r2,c2)).setFriend(side); //set appropriate side
+	    ((Player)getPiece(r2,c2)).setKing(king); //set as king if true already
 
-	    if (side) { //set as king if appropriate
+	    if (side) { //new kings are crowned!
 		if (r2 == 0)
 		    ((Player)getPiece(r2,c2)).setKing(true);
-	    }
-	    else if (getPlayerRC(r1,c1).isKing()) {
-		((Player)getPiece(r2,c2)).setKing(true);
 	    }
 	    else {
 		if (r2 == 7)
