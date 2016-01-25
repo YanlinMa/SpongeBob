@@ -84,7 +84,6 @@ public class Checkers {
 	    //move users piece -- STILL NEED EXTRA JUMP FXN
 	    b.move(r1,c1,r2,c2);
 	    System.out.println();
-	    System.out.println("Computer's turn.");
 	    System.out.print(b);
 
 	    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +107,7 @@ public class Checkers {
 		c2 = rc[1];
 
 		b.move(r1,c1,r2,c2);
+		System.out.println("Computer's turn.");
 
 	    }
 
