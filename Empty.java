@@ -8,6 +8,7 @@ public class Empty extends Piece {
 	retStr = "[===]";
 
 	return retStr;
+	
     }      
 
 }
